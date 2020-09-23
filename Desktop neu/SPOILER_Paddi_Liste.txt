@@ -1,0 +1,8 @@
+1. Suche mit enter
+2. Nach dem Start nach alle filtern funktioniert nicht
+3. Info funktioniert nicht
+4. Nach dem Bearbeiten geht es nicht mehr zurück
+5. Neue Einträge funktionieren nicht
+6. Filtern nach Datum und Bewertung Aufsteigend/Absteigend
+7. Kategorien bei Auswahl hervorheben
+8. Die DB schneller machen
