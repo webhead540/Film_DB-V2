@@ -83,7 +83,7 @@ namespace Film_BD_V4
             picturePath = Application.StartupPath + @"\images\";
             if (Environment.UserName.ToLower() == "patrick")
             {
-                picturePath = @"D:\Patrick\Bilder\kamera\Amsterdam August 2012\";
+                picturePath = @"Q:\Patrick\Bilder\kamera\Amsterdam August 2012\";
             }
             /*Point location = Properties.Settings.Default.Location;
             Size windowSize = Properties.Settings.Default.Size;
@@ -414,6 +414,22 @@ namespace Film_BD_V4
 
         private void pbxSearch_Click(object sender, EventArgs e)
         {
+            doSearch();
+        }
+        private void tbxSearch_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == Convert.ToChar(Keys.Enter))
+            {
+                doSearch();
+            }
+        }
+        private void LivMedia_DrawItem(object sender, DrawListViewItemEventArgs e)
+        {
+            e.DrawDefault = true;
+            e.Graphics.DrawRectangle(Pens.Red, e.Bounds);
+        }
+        private void doSearch()
+        {
             if (tbxSearch.Text.Length > 0)
             {
 
@@ -425,12 +441,6 @@ namespace Film_BD_V4
             }
 
             fillGui(currentList);
-        }
-
-        private void LivMedia_DrawItem(object sender, DrawListViewItemEventArgs e)
-        {
-            e.DrawDefault = true;
-            e.Graphics.DrawRectangle(Pens.Red, e.Bounds);
         }
         #endregion
 
@@ -711,6 +721,12 @@ namespace Film_BD_V4
                 btnInfo.BackColor = colBack;
             }
         }
+        #endregion
+
+        private void tbxSearch_Enter(object sender, EventArgs e)
+        {
+            tbxSearch.Clear();
+        }
     }
-    #endregion
+
 }

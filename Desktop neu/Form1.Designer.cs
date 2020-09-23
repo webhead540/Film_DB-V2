@@ -171,6 +171,8 @@
             this.tbxSearch.Size = new System.Drawing.Size(209, 18);
             this.tbxSearch.TabIndex = 61;
             this.tbxSearch.Text = "Suche";
+            this.tbxSearch.Enter += new System.EventHandler(this.tbxSearch_Enter);
+            this.tbxSearch.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbxSearch_KeyPress);
             // 
             // panel4
             // 
