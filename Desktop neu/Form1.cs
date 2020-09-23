@@ -145,11 +145,14 @@ namespace Film_BD_V4
 
         private void btnFilterAll_Click(object sender, EventArgs e)
         {
-            fillGui(mt.getAllEntrys());
+            livMedia.Visible = true;
+            currentList = mt.getAllEntrys();
+            fillGui(currentList);
         }
 
         private void btnFilterMovie_Click(object sender, EventArgs e)
         {
+            livMedia.Visible = true;
             currentType = "movie";
             List<Media> loopList = new List<Media>();
             string[] types = new string[3] { "Film","",""};
@@ -205,20 +208,27 @@ namespace Film_BD_V4
             {
                 fillGui(series);
             }
-            else
+            else if (currentType == "anime")
             {
                 fillGui(anime);
+            }
+            else
+            {
+                currentList = mt.getAllEntrys();
+                fillGui(currentList);
             }
         }
 
         private void btnShowStarted_Click(object sender, EventArgs e)
         {
+            livMedia.Visible = true;
             lblNoData.Visible = true;
             livMedia.Clear();
         }
 
         private void btnShowFavorites_Click(object sender, EventArgs e)
         {
+            livMedia.Visible = true;
             lblNoData.Visible = false;
             livMedia.Visible = true;
             fillGui(createSubList());
@@ -226,6 +236,7 @@ namespace Film_BD_V4
 
         private void bbtnFilterSeries_Click(object sender, EventArgs e)
         {
+            
             livMedia.Visible = true;
             currentType = "series";
             List<Media> loopList= new List<Media>();
@@ -269,6 +280,7 @@ namespace Film_BD_V4
 
         private void btnShowFinished_Click(object sender, EventArgs e)
         {
+            livMedia.Visible = true;
             lblNoData.Visible = true;
             livMedia.Clear();
         }

@@ -409,7 +409,7 @@
             // btnShowAll
             // 
             this.btnShowAll.FlatAppearance.BorderSize = 0;
-            this.btnShowAll.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnShowAll.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnShowAll.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.btnShowAll.Location = new System.Drawing.Point(2, 6);
             this.btnShowAll.Name = "btnShowAll";
