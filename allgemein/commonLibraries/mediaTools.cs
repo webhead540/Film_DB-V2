@@ -244,5 +244,19 @@ namespace commonLibraries
             return gr.getGenreList();
 
         }
+        public bool convertEmtry(string[] args, string source, int id)
+        {
+            try
+            {
+                string entry;
+                entry = id + ";" + String.Join(";", args);
+                fh.addEntry(entry);
+                return true;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
     }
 }

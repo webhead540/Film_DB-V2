@@ -22,6 +22,8 @@ namespace commonLibraries
         #endregion
         #region Boolean
         public bool wishList { get; private set; }
+        public bool finished { get; private set; }
+        public bool started { get; private set; }
         #endregion
         #region DateTime
         public DateTime lastWatchDate { get; private set; }
@@ -118,6 +120,21 @@ namespace commonLibraries
                 genre = "";
             }
             genre = cat;
+        }
+        internal void setState(bool finished)
+        {
+            if(finished)
+            {
+                this.finished = true;
+                this.started = false;
+                this.wishList = false;
+            }
+            else
+            {
+                this.started = true;
+                this.wishList = false;
+                this.finished = false;
+            }
         }
         #endregion
     }

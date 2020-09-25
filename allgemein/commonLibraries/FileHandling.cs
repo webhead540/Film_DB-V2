@@ -167,6 +167,18 @@ namespace commonLibraries
                         {
                             m.setLastWatchDate(DateTime.MinValue);
                         }
+                        if(parts.Count()>11) //kompatibilität zur alten Liste ohne angefangen/abgeschlossen
+                        {
+                            if (parts[11] == "false")
+                            {
+                                m.setState(false);
+                            }
+                            else
+                            {
+                                m.setState(true);
+                            }
+                                
+                        }
                     }
                     else 
                     {
