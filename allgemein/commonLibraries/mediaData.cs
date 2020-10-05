@@ -121,20 +121,16 @@ namespace commonLibraries
             }
             genre = cat;
         }
-        internal void setState(bool finished)
+        internal void setState(bool started, bool finisched)
         {
-            if(finished)
+
+            this.finished = finisched;
+            this.started = started;
+            if(started==true||finisched==true)
             {
-                this.finished = true;
-                this.started = false;
                 this.wishList = false;
             }
-            else
-            {
-                this.started = true;
-                this.wishList = false;
-                this.finished = false;
-            }
+
         }
         #endregion
     }

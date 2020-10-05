@@ -169,15 +169,7 @@ namespace commonLibraries
                         }
                         if(parts.Count()>11) //kompatibilität zur alten Liste ohne angefangen/abgeschlossen
                         {
-                            if (parts[11] == "false")
-                            {
-                                m.setState(false);
-                            }
-                            else
-                            {
-                                m.setState(true);
-                            }
-                                
+                                m.setState(Convert.ToBoolean(parts[11]),Convert.ToBoolean(parts[12]));        
                         }
                     }
                     else 
@@ -240,6 +232,10 @@ namespace commonLibraries
                 allEntrys.Add(createNewEntryString(m));
             }
             return allEntrys;
+        }
+        public void clearEntrys()
+        {
+            entrys.Clear();
         }
     }
 }

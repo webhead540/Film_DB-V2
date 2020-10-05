@@ -170,7 +170,7 @@ namespace Film_BD_V4
             }
             fillGui(movies);
         }
-        private List<Media> createSubList()
+        private List<Media> createSubList(int type)
         {
             List<Media> worklist;
             List<Media> returnList;
@@ -190,7 +190,18 @@ namespace Film_BD_V4
             {
                 worklist = currentList;
             }
-            returnList = worklist.FindAll(x => x.wishList == true);
+            if(type==0)
+            {
+                returnList = worklist.FindAll(x => x.wishList == true);
+            }
+            else if (type==1)
+            {
+                returnList = worklist.FindAll(x => x.started == true);
+            }
+            else
+            {
+                returnList = worklist.FindAll(x => x.finished == true);
+            }
 
             return returnList;
 
@@ -198,7 +209,6 @@ namespace Film_BD_V4
 
         private void btnShowAll_Click(object sender, EventArgs e)
         {
-            lblNoData.Visible = false;
             livMedia.Visible = true;
             if (currentType == "movie")
             {
@@ -222,16 +232,15 @@ namespace Film_BD_V4
         private void btnShowStarted_Click(object sender, EventArgs e)
         {
             livMedia.Visible = true;
-            lblNoData.Visible = true;
             livMedia.Clear();
+            fillGui(createSubList(1));
         }
 
         private void btnShowFavorites_Click(object sender, EventArgs e)
         {
             livMedia.Visible = true;
-            lblNoData.Visible = false;
             livMedia.Visible = true;
-            fillGui(createSubList());
+            fillGui(createSubList(0));
         }
 
         private void bbtnFilterSeries_Click(object sender, EventArgs e)
@@ -281,8 +290,8 @@ namespace Film_BD_V4
         private void btnShowFinished_Click(object sender, EventArgs e)
         {
             livMedia.Visible = true;
-            lblNoData.Visible = true;
             livMedia.Clear();
+            fillGui(createSubList(2));
         }
 
         private void btnEdit_Click(object sender, EventArgs e)
@@ -454,6 +463,31 @@ namespace Film_BD_V4
 
             fillGui(currentList);
         }
+        private void tbxSearch_Enter(object sender, EventArgs e)
+        {
+            tbxSearch.Clear();
+        }
+
+        private void cbxSort_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            List<Media> sortedList;
+            if (cbxSort.SelectedIndex == 0)
+            {
+                sortedList = currentList.OrderByDescending(x => x.dateAdded).ToList();
+            }
+            else if (cbxSort.SelectedIndex == 1)
+            {
+                sortedList = currentList.OrderBy(x => x.dateAdded).ToList();
+            }
+            if (cbxSort.SelectedIndex == 0)
+            {
+                sortedList = currentList.OrderByDescending(x => x.rating).ToList();
+            }
+            else if (cbxSort.SelectedIndex == 1)
+            {
+                sortedList = currentList.OrderBy(x => x.rating).ToList();
+            }
+        }
         #endregion
 
         #region neuer Eintrag
@@ -547,11 +581,6 @@ namespace Film_BD_V4
                 MessageBox.Show("Du machst was falsch! Folgender Fehler ist aufgetreten: " + ex.Message);
             }
         }
-
-
-
-
-
         private void btnImageSelect_Click(object sender, EventArgs e)
         {
             try
@@ -734,11 +763,6 @@ namespace Film_BD_V4
             }
         }
         #endregion
-
-        private void tbxSearch_Enter(object sender, EventArgs e)
-        {
-            tbxSearch.Clear();
-        }
     }
 
 }

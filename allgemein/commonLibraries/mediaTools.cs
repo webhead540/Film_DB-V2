@@ -233,7 +233,6 @@ namespace commonLibraries
         {
             return fh.getGenreList();
         }
-        //nachstehende Methoden momentan nicht benötigt
         public List<Media> getAllEntrys()
         {
             return content;
@@ -244,7 +243,7 @@ namespace commonLibraries
             return gr.getGenreList();
 
         }
-        public bool convertEmtry(string[] args, string source, int id)
+        public bool convertEmtry(string[] args, int id)
         {
             try
             {
@@ -257,6 +256,10 @@ namespace commonLibraries
             {
                 throw ex;
             }
+        }
+        public void clearFileList()
+        {
+            fh.clearEntrys();
         }
     }
 }

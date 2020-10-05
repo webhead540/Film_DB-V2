@@ -83,10 +83,10 @@
             this.img2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.img3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.img4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.lblNoData = new System.Windows.Forms.Label();
             this.tmrHide = new System.Windows.Forms.Timer(this.components);
             this.ofdImageSelect = new System.Windows.Forms.OpenFileDialog();
             this.ttpInfo = new System.Windows.Forms.ToolTip(this.components);
+            this.cbxSort = new System.Windows.Forms.ComboBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbxSearch)).BeginInit();
             this.panel6.SuspendLayout();
@@ -693,18 +693,6 @@
             this.livMedia.DrawItem += new System.Windows.Forms.DrawListViewItemEventHandler(this.LivMedia_DrawItem);
             this.livMedia.SelectedIndexChanged += new System.EventHandler(this.livMedia_SelectedIndexChanged);
             // 
-            // lblNoData
-            // 
-            this.lblNoData.AutoSize = true;
-            this.lblNoData.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNoData.ForeColor = System.Drawing.Color.Red;
-            this.lblNoData.Location = new System.Drawing.Point(480, 306);
-            this.lblNoData.Name = "lblNoData";
-            this.lblNoData.Size = new System.Drawing.Size(127, 25);
-            this.lblNoData.TabIndex = 81;
-            this.lblNoData.Text = "keine Daten";
-            this.lblNoData.Visible = false;
-            // 
             // tmrHide
             // 
             this.tmrHide.Interval = 2000;
@@ -714,13 +702,28 @@
             // 
             this.ofdImageSelect.FileName = "openFileDialog1";
             // 
+            // cbxSort
+            // 
+            this.cbxSort.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(57)))), ((int)(((byte)(63)))));
+            this.cbxSort.ForeColor = System.Drawing.Color.White;
+            this.cbxSort.FormattingEnabled = true;
+            this.cbxSort.Items.AddRange(new object[] {
+            "Datum ↓",
+            "Datum ↑",
+            "Bewertung ↓",
+            "Bewertung ↑"});
+            this.cbxSort.Location = new System.Drawing.Point(145, 77);
+            this.cbxSort.Name = "cbxSort";
+            this.cbxSort.Size = new System.Drawing.Size(121, 21);
+            this.cbxSort.TabIndex = 81;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(57)))), ((int)(((byte)(63)))));
             this.ClientSize = new System.Drawing.Size(1111, 637);
-            this.Controls.Add(this.lblNoData);
+            this.Controls.Add(this.cbxSort);
             this.Controls.Add(this.livMedia);
             this.Controls.Add(this.dtpLastWatchDate);
             this.Controls.Add(this.label2);
@@ -819,11 +822,11 @@
         private System.Windows.Forms.ColumnHeader img2;
         private System.Windows.Forms.ColumnHeader img3;
         private System.Windows.Forms.ColumnHeader img4;
-        private System.Windows.Forms.Label lblNoData;
         private System.Windows.Forms.Timer tmrHide;
         private System.Windows.Forms.OpenFileDialog ofdImageSelect;
         private System.Windows.Forms.ToolTip ttpInfo;
         private System.Windows.Forms.Label lblDelmode;
+        private System.Windows.Forms.ComboBox cbxSort;
     }
 }
 
