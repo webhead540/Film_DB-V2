@@ -715,10 +715,12 @@
             "Datum Auf",
             "Datum Ab",
             "Bewertung Auf",
-            "Bewertung Ab"});
+            "Bewertung Ab",
+            "Name A-Z",
+            "Name Z-A"});
             this.lbxSort.Location = new System.Drawing.Point(228, 101);
             this.lbxSort.Name = "lbxSort";
-            this.lbxSort.Size = new System.Drawing.Size(82, 65);
+            this.lbxSort.Size = new System.Drawing.Size(82, 78);
             this.lbxSort.TabIndex = 82;
             this.lbxSort.Visible = false;
             this.lbxSort.SelectedIndexChanged += new System.EventHandler(this.lbxSort_SelectedIndexChanged);

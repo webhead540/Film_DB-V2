@@ -493,22 +493,32 @@ namespace Film_BD_V4
         private void lbxSort_SelectedIndexChanged(object sender, EventArgs e)
         {
             List<Media> sortedList=null;
+
             if (lbxSort.SelectedIndex == 0)
             {
-                sortedList = currentList.OrderBy(x => x.dateAdded).ToList();
+                sortedList = currentList.OrderBy(x => x.dateAdded).ThenBy(x=>x.name).ToList();
             }
             else if (lbxSort.SelectedIndex == 1)
             {
-                sortedList = currentList.OrderByDescending(x => x.dateAdded).ToList();
+                sortedList = currentList.OrderByDescending(x => x.dateAdded).ThenBy(x => x.name).ToList();
             }
             if (lbxSort.SelectedIndex == 2)
             {
-                sortedList = currentList.OrderBy(x => x.rating).ToList();
+                sortedList = currentList.OrderBy(x => x.rating).ThenBy(x => x.name).ToList();
             }
             else if (lbxSort.SelectedIndex == 3)
             {
-                sortedList = currentList.OrderByDescending(x => x.rating).ToList();
+                sortedList = currentList.OrderByDescending(x => x.rating).ThenBy(x => x.name).ToList();
             }
+            else if(lbxSort.SelectedIndex == 4)
+            {
+                sortedList = currentList.OrderBy(x => x.name).ToList();
+            }
+            else if (lbxSort.SelectedIndex == 5)
+            {
+                sortedList = currentList.OrderByDescending(x => x.name).ToList();
+            }
+
             fillGui(sortedList,true);
             lblSortInfo.Text = lbxSort.Text;
             lbxSort.Visible = false;
