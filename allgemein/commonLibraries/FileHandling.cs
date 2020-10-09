@@ -122,7 +122,7 @@ namespace commonLibraries
                 m.setName(parts[1]);
                 m.setLink(parts[2]);
                 m.setWatchDate(Convert.ToDateTime(parts[3]));
-                if (parts[3] != "")
+                if (parts[4] != "")
                 {
                     m.setRating(Convert.ToInt32(parts[4]));
                 }

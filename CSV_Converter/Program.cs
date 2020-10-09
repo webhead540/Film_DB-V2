@@ -19,7 +19,7 @@ namespace CSV_Converter
             foreach (Media m in allEntrys)
             {
                 List<string> data = new List<string>();
-                data.AddRange(new string[] { m.name, m.link, m.dateAdded.ToShortDateString(), m.rating.ToString(), m.type, m.pictureName, m.wishList.ToString(), m.lastWatchDate.ToShortDateString(), m.genre }) ;
+                data.AddRange(new string[] { m.name, m.link, m.dateAdded.ToShortDateString(), m.rating.ToString(), m.type, m.parts.ToString(), m.pictureName, m.wishList.ToString(), m.genre, m.lastWatchDate.ToShortDateString() }); ;
                 if(m.wishList)
                 {
                     data.Add("false;false");
