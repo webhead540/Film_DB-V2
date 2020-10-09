@@ -164,6 +164,7 @@ namespace Film_BD_V4
         private void btnFilterAll_Click(object sender, EventArgs e)
         {
             livMedia.Visible = true;
+            currentType = "";
             currentList = mt.getAllEntrys();
             fillGui(currentList);
         }
