@@ -86,7 +86,10 @@
             this.tmrHide = new System.Windows.Forms.Timer(this.components);
             this.ofdImageSelect = new System.Windows.Forms.OpenFileDialog();
             this.ttpInfo = new System.Windows.Forms.ToolTip(this.components);
-            this.cbxSort = new System.Windows.Forms.ComboBox();
+            this.lbxSort = new System.Windows.Forms.ListBox();
+            this.btnSort = new System.Windows.Forms.Button();
+            this.lblSortInfo = new System.Windows.Forms.Label();
+            this.panel12 = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbxSearch)).BeginInit();
             this.panel6.SuspendLayout();
@@ -296,7 +299,7 @@
             this.btnShowFavorites.FlatAppearance.BorderSize = 0;
             this.btnShowFavorites.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnShowFavorites.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.btnShowFavorites.Location = new System.Drawing.Point(226, 6);
+            this.btnShowFavorites.Location = new System.Drawing.Point(226, 3);
             this.btnShowFavorites.Name = "btnShowFavorites";
             this.btnShowFavorites.Size = new System.Drawing.Size(75, 23);
             this.btnShowFavorites.TabIndex = 69;
@@ -702,20 +705,54 @@
             // 
             this.ofdImageSelect.FileName = "openFileDialog1";
             // 
-            // cbxSort
+            // lbxSort
             // 
-            this.cbxSort.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(57)))), ((int)(((byte)(63)))));
-            this.cbxSort.ForeColor = System.Drawing.Color.White;
-            this.cbxSort.FormattingEnabled = true;
-            this.cbxSort.Items.AddRange(new object[] {
-            "Datum ↓",
-            "Datum ↑",
-            "Bewertung ↓",
-            "Bewertung ↑"});
-            this.cbxSort.Location = new System.Drawing.Point(145, 77);
-            this.cbxSort.Name = "cbxSort";
-            this.cbxSort.Size = new System.Drawing.Size(121, 21);
-            this.cbxSort.TabIndex = 81;
+            this.lbxSort.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(57)))), ((int)(((byte)(63)))));
+            this.lbxSort.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.lbxSort.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.lbxSort.FormattingEnabled = true;
+            this.lbxSort.Items.AddRange(new object[] {
+            "Datum Auf",
+            "Datum Ab",
+            "Bewertung Auf",
+            "Bewertung Ab"});
+            this.lbxSort.Location = new System.Drawing.Point(228, 101);
+            this.lbxSort.Name = "lbxSort";
+            this.lbxSort.Size = new System.Drawing.Size(82, 65);
+            this.lbxSort.TabIndex = 82;
+            this.lbxSort.Visible = false;
+            this.lbxSort.SelectedIndexChanged += new System.EventHandler(this.lbxSort_SelectedIndexChanged);
+            // 
+            // btnSort
+            // 
+            this.btnSort.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(57)))), ((int)(((byte)(63)))));
+            this.btnSort.FlatAppearance.BorderSize = 0;
+            this.btnSort.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSort.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSort.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnSort.Location = new System.Drawing.Point(216, 76);
+            this.btnSort.Name = "btnSort";
+            this.btnSort.Size = new System.Drawing.Size(85, 22);
+            this.btnSort.TabIndex = 65;
+            this.btnSort.Text = "Sortieren";
+            this.btnSort.UseVisualStyleBackColor = false;
+            this.btnSort.Click += new System.EventHandler(this.btnSort_Click);
+            // 
+            // lblSortInfo
+            // 
+            this.lblSortInfo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.lblSortInfo.Location = new System.Drawing.Point(297, 81);
+            this.lblSortInfo.Name = "lblSortInfo";
+            this.lblSortInfo.Size = new System.Drawing.Size(100, 17);
+            this.lblSortInfo.TabIndex = 83;
+            // 
+            // panel12
+            // 
+            this.panel12.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(48)))), ((int)(((byte)(82)))));
+            this.panel12.Location = new System.Drawing.Point(226, 96);
+            this.panel12.Name = "panel12";
+            this.panel12.Size = new System.Drawing.Size(65, 2);
+            this.panel12.TabIndex = 71;
             // 
             // Form1
             // 
@@ -723,7 +760,10 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(57)))), ((int)(((byte)(63)))));
             this.ClientSize = new System.Drawing.Size(1111, 637);
-            this.Controls.Add(this.cbxSort);
+            this.Controls.Add(this.panel12);
+            this.Controls.Add(this.lblSortInfo);
+            this.Controls.Add(this.btnSort);
+            this.Controls.Add(this.lbxSort);
             this.Controls.Add(this.livMedia);
             this.Controls.Add(this.dtpLastWatchDate);
             this.Controls.Add(this.label2);
@@ -826,7 +866,10 @@
         private System.Windows.Forms.OpenFileDialog ofdImageSelect;
         private System.Windows.Forms.ToolTip ttpInfo;
         private System.Windows.Forms.Label lblDelmode;
-        private System.Windows.Forms.ComboBox cbxSort;
+        private System.Windows.Forms.ListBox lbxSort;
+        private System.Windows.Forms.Button btnSort;
+        private System.Windows.Forms.Label lblSortInfo;
+        private System.Windows.Forms.Panel panel12;
     }
 }
 

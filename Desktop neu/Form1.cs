@@ -11,6 +11,7 @@ using System.IO;
 using System.Diagnostics;
 using System.Net;
 using commonLibraries;
+using System.Collections;
 
 namespace Film_BD_V4
 {
@@ -71,10 +72,6 @@ namespace Film_BD_V4
         #endregion
 
 
-        private void btnSearch_Click(object sender, EventArgs e)
-        {
-
-        }
         #region Allgemein
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -100,9 +97,26 @@ namespace Film_BD_V4
                 currentList = mt.getAllEntrys();
                 fillGui(currentList);
             }
-            catch
+            catch(FileNotFoundException)
             {
-
+                MessageBox.Show("Die CSV Datei wurde nicht gefunden");
+            }
+            catch(InvalidCastException ex)
+            {
+                MessageBox.Show("Die Datei enthält ungültige Werte. Der Fehler trat an folgender Stelle auf: " + ex.Data[0].ToString());
+            }
+            catch(FormatException ex)
+            {
+                string exData = "";
+                foreach (DictionaryEntry de in ex.Data)
+                {
+                    exData = de.Value.ToString();
+                }
+                    MessageBox.Show("Die Datei enthält ungültige Werte. Der Fehler trat an folgender Stelle auf: " + exData);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Beim Laden des Programms trat folgender Fehler auf: " + ex.Message + Environment.NewLine + ex.StackTrace);
             }
         }
         private void Form1_FormClosed(object sender, FormClosedEventArgs e)
@@ -113,12 +127,16 @@ namespace Film_BD_V4
         }
         #endregion
         #region vorhandes Anzeigen
-        private void fillGui(List<Media> guiList)
+        private void fillGui(List<Media> guiList,bool presorted=false)
         {
-
             int index = 0;
             livMedia.Clear();
             imlContentPics.Images.Clear();
+            if(!presorted)
+            {
+                guiList = guiList.OrderBy(x => x.id).ToList();
+                lblSortInfo.Text = "";
+            }
             currentList = guiList;
 
             foreach (Media m in guiList)
@@ -467,26 +485,32 @@ namespace Film_BD_V4
         {
             tbxSearch.Clear();
         }
-
-        private void cbxSort_SelectedIndexChanged(object sender, EventArgs e)
+        private void btnSort_Click(object sender, EventArgs e)
         {
-            List<Media> sortedList;
-            if (cbxSort.SelectedIndex == 0)
-            {
-                sortedList = currentList.OrderByDescending(x => x.dateAdded).ToList();
-            }
-            else if (cbxSort.SelectedIndex == 1)
+            lbxSort.Visible = !lbxSort.Visible;
+        }
+        private void lbxSort_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            List<Media> sortedList=null;
+            if (lbxSort.SelectedIndex == 0)
             {
                 sortedList = currentList.OrderBy(x => x.dateAdded).ToList();
             }
-            if (cbxSort.SelectedIndex == 0)
+            else if (lbxSort.SelectedIndex == 1)
             {
-                sortedList = currentList.OrderByDescending(x => x.rating).ToList();
+                sortedList = currentList.OrderByDescending(x => x.dateAdded).ToList();
             }
-            else if (cbxSort.SelectedIndex == 1)
+            if (lbxSort.SelectedIndex == 2)
             {
                 sortedList = currentList.OrderBy(x => x.rating).ToList();
             }
+            else if (lbxSort.SelectedIndex == 3)
+            {
+                sortedList = currentList.OrderByDescending(x => x.rating).ToList();
+            }
+            fillGui(sortedList,true);
+            lblSortInfo.Text = lbxSort.Text;
+            lbxSort.Visible = false;
         }
         #endregion
 
@@ -762,7 +786,10 @@ namespace Film_BD_V4
                 btnInfo.BackColor = colBack;
             }
         }
+
         #endregion
+
+       
     }
 
 }

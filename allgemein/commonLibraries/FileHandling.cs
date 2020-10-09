@@ -90,11 +90,11 @@ namespace commonLibraries
         internal List<Media> parseFile()
         {
             List<Media> content = new List<Media>();
+            int curIndex = 0;
             try
             {
                 entrys = File.ReadAllLines(csvPath).ToList();
                 //int freeId = 0;
-                int curIndex = 0;
                 foreach (string entry in entrys)
                 {
                     Debug.Print(curIndex.ToString());
@@ -108,6 +108,7 @@ namespace commonLibraries
             }
             catch (Exception ex)
             {
+                ex.Data.Add("ParseFile",entrys[curIndex]);
                 throw ex;
             }
 
