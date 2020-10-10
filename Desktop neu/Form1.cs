@@ -54,7 +54,9 @@ namespace Film_BD_V4
 
         #region Farben
         Color colBack = Color.FromArgb(54, 57, 63);
-
+        Color colHighlightLV1 = Color.FromArgb(255, 102, 0); //Farbe für Film/Serie/Anime
+        Color colHighlightLV2 = Color.FromArgb(153, 51, 153); //Farbe für Angefangen/Abgeschlossen/Lesezeichen
+        Color colDefault = Color.FromArgb(36, 61, 106);
         #endregion
 
 
@@ -91,12 +93,15 @@ namespace Film_BD_V4
                 this.Height = windowSize.Height;
                 this.Width = windowSize.Width;
             }*/
+            changeHighlighting(btnFilterAll, true);
+            changeHighlighting(btnShowAll, false);
             try
             {
                 mt = new mediaTools(fileName, picturePath, "");
                 currentList = mt.getAllEntrys();
                 fillGui(currentList);
             }
+            
             catch(FileNotFoundException)
             {
                 MessageBox.Show("Die CSV Datei wurde nicht gefunden");
@@ -124,6 +129,36 @@ namespace Film_BD_V4
             Properties.Settings.Default.Location = this.Location;
             Properties.Settings.Default.Size = this.Size;
             Properties.Settings.Default.Save();
+        }
+        private void changeHighlighting(Control trigger, bool filter)
+        {
+            string pnlNamePart = "";
+            Color colToSet;
+            string triggerPanelName = "";
+            triggerPanelName = "pnl" + trigger.Name.Substring(3);
+            if(filter)
+            {
+                pnlNamePart = "pnlFilter";
+                colToSet = colHighlightLV2;
+            }
+            else
+            {
+                pnlNamePart = "pnlShow";
+                colToSet = colHighlightLV1;
+            }
+            foreach (Control C in pnlMain.Controls)
+            {
+                if (C.GetType() == typeof(System.Windows.Forms.Panel))
+                {
+                    
+                    if (C.Name.Contains(pnlNamePart))
+                    {
+                        C.BackColor = colDefault;
+                    }
+                }
+            }
+            //Control fittingPanel = pnlMain.Controls.Find(triggerPanelName,true)[0];
+            //fittingPanel.BackColor = colToSet;
         }
         #endregion
         #region vorhandes Anzeigen
@@ -163,6 +198,7 @@ namespace Film_BD_V4
 
         private void btnFilterAll_Click(object sender, EventArgs e)
         {
+            changeHighlighting((Control) sender, true);
             livMedia.Visible = true;
             currentType = "";
             currentList = mt.getAllEntrys();
@@ -171,8 +207,10 @@ namespace Film_BD_V4
 
         private void btnFilterMovie_Click(object sender, EventArgs e)
         {
+            changeHighlighting((Control)sender, true);
             livMedia.Visible = true;
             currentType = "movie";
+            movies.Clear();
             List<Media> loopList = new List<Media>();
             string[] types = new string[3] { "Film","",""};
             mt.filterList(types, true);
@@ -264,9 +302,10 @@ namespace Film_BD_V4
 
         private void bbtnFilterSeries_Click(object sender, EventArgs e)
         {
-            
+            changeHighlighting((Control)sender, true);
             livMedia.Visible = true;
             currentType = "series";
+            series.Clear();
             List<Media> loopList= new List<Media>();
             string[] types = new string[3] { "Serie", "", "" };
             mt.filterList(types, true);
@@ -287,8 +326,10 @@ namespace Film_BD_V4
 
         private void btnFilterAnime_Click(object sender, EventArgs e)
         {
+            changeHighlighting((Control)sender, true);
             livMedia.Visible = true;
             currentType = "anime";
+            anime.Clear();
             List<Media> loopList = new List<Media>();
             string[] types = new string[3] { "Anime", "", "" };
             mt.filterList(types, true);

@@ -30,32 +30,32 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.panel7 = new System.Windows.Forms.Panel();
+            this.pnlMain = new System.Windows.Forms.Panel();
+            this.pnlShowAll = new System.Windows.Forms.Panel();
             this.btnFilterAll = new System.Windows.Forms.Button();
             this.pbxSearch = new System.Windows.Forms.PictureBox();
             this.panel5 = new System.Windows.Forms.Panel();
             this.tbxSearch = new System.Windows.Forms.TextBox();
-            this.panel4 = new System.Windows.Forms.Panel();
+            this.pnlShowSeries = new System.Windows.Forms.Panel();
             this.btnFilterSeries = new System.Windows.Forms.Button();
-            this.panel3 = new System.Windows.Forms.Panel();
+            this.pnlFilterMovie = new System.Windows.Forms.Panel();
             this.btnFilterMovie = new System.Windows.Forms.Button();
-            this.panel2 = new System.Windows.Forms.Panel();
+            this.pnlFilterAnime = new System.Windows.Forms.Panel();
             this.btnFilterAnime = new System.Windows.Forms.Button();
             this.imlContentPics = new System.Windows.Forms.ImageList(this.components);
             this.panel6 = new System.Windows.Forms.Panel();
             this.lblDelmode = new System.Windows.Forms.Label();
-            this.panel11 = new System.Windows.Forms.Panel();
+            this.pnlFilterFavs = new System.Windows.Forms.Panel();
             this.btnShowFavorites = new System.Windows.Forms.Button();
             this.btnNewEntry = new System.Windows.Forms.Button();
-            this.panel10 = new System.Windows.Forms.Panel();
+            this.pnlFilterStarted = new System.Windows.Forms.Panel();
             this.btnEdit = new System.Windows.Forms.Button();
             this.btnInfo = new System.Windows.Forms.Button();
             this.btnShowStarted = new System.Windows.Forms.Button();
-            this.panel9 = new System.Windows.Forms.Panel();
+            this.pnlFilterFinished = new System.Windows.Forms.Panel();
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnShowFinished = new System.Windows.Forms.Button();
-            this.panel8 = new System.Windows.Forms.Panel();
+            this.pnlFilterAll = new System.Windows.Forms.Panel();
             this.btnShowAll = new System.Windows.Forms.Button();
             this.dtpLastWatchDate = new System.Windows.Forms.DateTimePicker();
             this.label2 = new System.Windows.Forms.Label();
@@ -89,8 +89,8 @@
             this.lbxSort = new System.Windows.Forms.ListBox();
             this.btnSort = new System.Windows.Forms.Button();
             this.lblSortInfo = new System.Windows.Forms.Label();
-            this.panel12 = new System.Windows.Forms.Panel();
-            this.panel1.SuspendLayout();
+            this.pnlSort = new System.Windows.Forms.Panel();
+            this.pnlMain.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbxSearch)).BeginInit();
             this.panel6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbxOK)).BeginInit();
@@ -99,33 +99,33 @@
             ((System.ComponentModel.ISupportInitialize)(this.nudRating)).BeginInit();
             this.SuspendLayout();
             // 
-            // panel1
+            // pnlMain
             // 
-            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(39)))), ((int)(((byte)(44)))));
-            this.panel1.Controls.Add(this.panel7);
-            this.panel1.Controls.Add(this.btnFilterAll);
-            this.panel1.Controls.Add(this.pbxSearch);
-            this.panel1.Controls.Add(this.panel5);
-            this.panel1.Controls.Add(this.tbxSearch);
-            this.panel1.Controls.Add(this.panel4);
-            this.panel1.Controls.Add(this.btnFilterSeries);
-            this.panel1.Controls.Add(this.panel3);
-            this.panel1.Controls.Add(this.btnFilterMovie);
-            this.panel1.Controls.Add(this.panel2);
-            this.panel1.Controls.Add(this.btnFilterAnime);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1111, 41);
-            this.panel1.TabIndex = 55;
+            this.pnlMain.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(39)))), ((int)(((byte)(44)))));
+            this.pnlMain.Controls.Add(this.pnlShowAll);
+            this.pnlMain.Controls.Add(this.btnFilterAll);
+            this.pnlMain.Controls.Add(this.pbxSearch);
+            this.pnlMain.Controls.Add(this.panel5);
+            this.pnlMain.Controls.Add(this.tbxSearch);
+            this.pnlMain.Controls.Add(this.pnlShowSeries);
+            this.pnlMain.Controls.Add(this.btnFilterSeries);
+            this.pnlMain.Controls.Add(this.pnlFilterMovie);
+            this.pnlMain.Controls.Add(this.btnFilterMovie);
+            this.pnlMain.Controls.Add(this.pnlFilterAnime);
+            this.pnlMain.Controls.Add(this.btnFilterAnime);
+            this.pnlMain.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnlMain.Location = new System.Drawing.Point(0, 0);
+            this.pnlMain.Name = "pnlMain";
+            this.pnlMain.Size = new System.Drawing.Size(1111, 47);
+            this.pnlMain.TabIndex = 55;
             // 
-            // panel7
+            // pnlShowAll
             // 
-            this.panel7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(61)))), ((int)(((byte)(106)))));
-            this.panel7.Location = new System.Drawing.Point(0, 37);
-            this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(152, 2);
-            this.panel7.TabIndex = 63;
+            this.pnlShowAll.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(61)))), ((int)(((byte)(106)))));
+            this.pnlShowAll.Location = new System.Drawing.Point(0, 37);
+            this.pnlShowAll.Name = "pnlShowAll";
+            this.pnlShowAll.Size = new System.Drawing.Size(152, 2);
+            this.pnlShowAll.TabIndex = 63;
             // 
             // btnFilterAll
             // 
@@ -137,7 +137,7 @@
             this.btnFilterAll.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.btnFilterAll.Location = new System.Drawing.Point(0, 0);
             this.btnFilterAll.Name = "btnFilterAll";
-            this.btnFilterAll.Size = new System.Drawing.Size(152, 41);
+            this.btnFilterAll.Size = new System.Drawing.Size(152, 47);
             this.btnFilterAll.TabIndex = 64;
             this.btnFilterAll.Text = "Alles";
             this.btnFilterAll.UseVisualStyleBackColor = false;
@@ -177,13 +177,13 @@
             this.tbxSearch.Enter += new System.EventHandler(this.tbxSearch_Enter);
             this.tbxSearch.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbxSearch_KeyPress);
             // 
-            // panel4
+            // pnlShowSeries
             // 
-            this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(61)))), ((int)(((byte)(106)))));
-            this.panel4.Location = new System.Drawing.Point(316, 37);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(152, 2);
-            this.panel4.TabIndex = 58;
+            this.pnlShowSeries.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(61)))), ((int)(((byte)(106)))));
+            this.pnlShowSeries.Location = new System.Drawing.Point(316, 37);
+            this.pnlShowSeries.Name = "pnlShowSeries";
+            this.pnlShowSeries.Size = new System.Drawing.Size(152, 2);
+            this.pnlShowSeries.TabIndex = 58;
             // 
             // btnFilterSeries
             // 
@@ -200,13 +200,13 @@
             this.btnFilterSeries.UseVisualStyleBackColor = false;
             this.btnFilterSeries.Click += new System.EventHandler(this.bbtnFilterSeries_Click);
             // 
-            // panel3
+            // pnlFilterMovie
             // 
-            this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(61)))), ((int)(((byte)(106)))));
-            this.panel3.Location = new System.Drawing.Point(158, 37);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(152, 2);
-            this.panel3.TabIndex = 56;
+            this.pnlFilterMovie.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(61)))), ((int)(((byte)(106)))));
+            this.pnlFilterMovie.Location = new System.Drawing.Point(158, 37);
+            this.pnlFilterMovie.Name = "pnlFilterMovie";
+            this.pnlFilterMovie.Size = new System.Drawing.Size(152, 2);
+            this.pnlFilterMovie.TabIndex = 56;
             // 
             // btnFilterMovie
             // 
@@ -223,13 +223,13 @@
             this.btnFilterMovie.UseVisualStyleBackColor = false;
             this.btnFilterMovie.Click += new System.EventHandler(this.btnFilterMovie_Click);
             // 
-            // panel2
+            // pnlFilterAnime
             // 
-            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(61)))), ((int)(((byte)(106)))));
-            this.panel2.Location = new System.Drawing.Point(474, 37);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(152, 2);
-            this.panel2.TabIndex = 55;
+            this.pnlFilterAnime.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(61)))), ((int)(((byte)(106)))));
+            this.pnlFilterAnime.Location = new System.Drawing.Point(474, 37);
+            this.pnlFilterAnime.Name = "pnlFilterAnime";
+            this.pnlFilterAnime.Size = new System.Drawing.Size(152, 2);
+            this.pnlFilterAnime.TabIndex = 55;
             // 
             // btnFilterAnime
             // 
@@ -256,20 +256,20 @@
             // 
             this.panel6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(48)))), ((int)(((byte)(54)))));
             this.panel6.Controls.Add(this.lblDelmode);
-            this.panel6.Controls.Add(this.panel11);
+            this.panel6.Controls.Add(this.pnlFilterFavs);
             this.panel6.Controls.Add(this.btnShowFavorites);
             this.panel6.Controls.Add(this.btnNewEntry);
-            this.panel6.Controls.Add(this.panel10);
+            this.panel6.Controls.Add(this.pnlFilterStarted);
             this.panel6.Controls.Add(this.btnEdit);
             this.panel6.Controls.Add(this.btnInfo);
             this.panel6.Controls.Add(this.btnShowStarted);
-            this.panel6.Controls.Add(this.panel9);
+            this.panel6.Controls.Add(this.pnlFilterFinished);
             this.panel6.Controls.Add(this.btnDelete);
             this.panel6.Controls.Add(this.btnShowFinished);
-            this.panel6.Controls.Add(this.panel8);
+            this.panel6.Controls.Add(this.pnlFilterAll);
             this.panel6.Controls.Add(this.btnShowAll);
             this.panel6.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel6.Location = new System.Drawing.Point(0, 41);
+            this.panel6.Location = new System.Drawing.Point(0, 47);
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(1111, 36);
             this.panel6.TabIndex = 57;
@@ -286,13 +286,13 @@
             this.lblDelmode.Text = "Löschmodus aktiv";
             this.lblDelmode.Visible = false;
             // 
-            // panel11
+            // pnlFilterFavs
             // 
-            this.panel11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(48)))), ((int)(((byte)(82)))));
-            this.panel11.Location = new System.Drawing.Point(226, 26);
-            this.panel11.Name = "panel11";
-            this.panel11.Size = new System.Drawing.Size(75, 2);
-            this.panel11.TabIndex = 70;
+            this.pnlFilterFavs.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(48)))), ((int)(((byte)(82)))));
+            this.pnlFilterFavs.Location = new System.Drawing.Point(226, 26);
+            this.pnlFilterFavs.Name = "pnlFilterFavs";
+            this.pnlFilterFavs.Size = new System.Drawing.Size(75, 2);
+            this.pnlFilterFavs.TabIndex = 70;
             // 
             // btnShowFavorites
             // 
@@ -320,13 +320,13 @@
             this.btnNewEntry.UseVisualStyleBackColor = true;
             this.btnNewEntry.Click += new System.EventHandler(this.btnNewEntry_Click);
             // 
-            // panel10
+            // pnlFilterStarted
             // 
-            this.panel10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(48)))), ((int)(((byte)(82)))));
-            this.panel10.Location = new System.Drawing.Point(52, 26);
-            this.panel10.Name = "panel10";
-            this.panel10.Size = new System.Drawing.Size(75, 2);
-            this.panel10.TabIndex = 68;
+            this.pnlFilterStarted.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(48)))), ((int)(((byte)(82)))));
+            this.pnlFilterStarted.Location = new System.Drawing.Point(52, 26);
+            this.pnlFilterStarted.Name = "pnlFilterStarted";
+            this.pnlFilterStarted.Size = new System.Drawing.Size(75, 2);
+            this.pnlFilterStarted.TabIndex = 68;
             // 
             // btnEdit
             // 
@@ -367,13 +367,13 @@
             this.btnShowStarted.UseVisualStyleBackColor = true;
             this.btnShowStarted.Click += new System.EventHandler(this.btnShowStarted_Click);
             // 
-            // panel9
+            // pnlFilterFinished
             // 
-            this.panel9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(48)))), ((int)(((byte)(82)))));
-            this.panel9.Location = new System.Drawing.Point(133, 26);
-            this.panel9.Name = "panel9";
-            this.panel9.Size = new System.Drawing.Size(87, 2);
-            this.panel9.TabIndex = 66;
+            this.pnlFilterFinished.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(48)))), ((int)(((byte)(82)))));
+            this.pnlFilterFinished.Location = new System.Drawing.Point(133, 26);
+            this.pnlFilterFinished.Name = "pnlFilterFinished";
+            this.pnlFilterFinished.Size = new System.Drawing.Size(87, 2);
+            this.pnlFilterFinished.TabIndex = 66;
             // 
             // btnDelete
             // 
@@ -401,13 +401,13 @@
             this.btnShowFinished.UseVisualStyleBackColor = true;
             this.btnShowFinished.Click += new System.EventHandler(this.btnShowFinished_Click);
             // 
-            // panel8
+            // pnlFilterAll
             // 
-            this.panel8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(48)))), ((int)(((byte)(82)))));
-            this.panel8.Location = new System.Drawing.Point(2, 26);
-            this.panel8.Name = "panel8";
-            this.panel8.Size = new System.Drawing.Size(44, 2);
-            this.panel8.TabIndex = 64;
+            this.pnlFilterAll.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(48)))), ((int)(((byte)(82)))));
+            this.pnlFilterAll.Location = new System.Drawing.Point(2, 26);
+            this.pnlFilterAll.Name = "pnlFilterAll";
+            this.pnlFilterAll.Size = new System.Drawing.Size(44, 2);
+            this.pnlFilterAll.TabIndex = 64;
             // 
             // btnShowAll
             // 
@@ -748,13 +748,13 @@
             this.lblSortInfo.Size = new System.Drawing.Size(100, 17);
             this.lblSortInfo.TabIndex = 83;
             // 
-            // panel12
+            // pnlSort
             // 
-            this.panel12.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(48)))), ((int)(((byte)(82)))));
-            this.panel12.Location = new System.Drawing.Point(226, 96);
-            this.panel12.Name = "panel12";
-            this.panel12.Size = new System.Drawing.Size(65, 2);
-            this.panel12.TabIndex = 71;
+            this.pnlSort.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(48)))), ((int)(((byte)(82)))));
+            this.pnlSort.Location = new System.Drawing.Point(226, 96);
+            this.pnlSort.Name = "pnlSort";
+            this.pnlSort.Size = new System.Drawing.Size(65, 2);
+            this.pnlSort.TabIndex = 71;
             // 
             // Form1
             // 
@@ -762,7 +762,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(57)))), ((int)(((byte)(63)))));
             this.ClientSize = new System.Drawing.Size(1111, 637);
-            this.Controls.Add(this.panel12);
+            this.Controls.Add(this.pnlSort);
             this.Controls.Add(this.lblSortInfo);
             this.Controls.Add(this.btnSort);
             this.Controls.Add(this.lbxSort);
@@ -789,15 +789,15 @@
             this.Controls.Add(this.btnImageSelect);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.panel6);
-            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.pnlMain);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form1";
             this.Text = "Film_DB";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Form1_FormClosed);
             this.Load += new System.EventHandler(this.Form1_Load);
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
+            this.pnlMain.ResumeLayout(false);
+            this.pnlMain.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbxSearch)).EndInit();
             this.panel6.ResumeLayout(false);
             this.panel6.PerformLayout();
@@ -812,30 +812,30 @@
 
         #endregion
 
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.Panel pnlMain;
+        private System.Windows.Forms.Panel pnlShowSeries;
         private System.Windows.Forms.Button btnFilterSeries;
-        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.Panel pnlFilterMovie;
         private System.Windows.Forms.Button btnFilterMovie;
-        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Panel pnlFilterAnime;
         private System.Windows.Forms.Button btnFilterAnime;
         private System.Windows.Forms.TextBox tbxSearch;
         private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.PictureBox pbxSearch;
         private System.Windows.Forms.Panel panel6;
-        private System.Windows.Forms.Panel panel7;
+        private System.Windows.Forms.Panel pnlShowAll;
         private System.Windows.Forms.Button btnFilterAll;
         private System.Windows.Forms.Button btnShowAll;
-        private System.Windows.Forms.Panel panel10;
+        private System.Windows.Forms.Panel pnlFilterStarted;
         private System.Windows.Forms.Button btnShowStarted;
-        private System.Windows.Forms.Panel panel9;
+        private System.Windows.Forms.Panel pnlFilterFinished;
         private System.Windows.Forms.Button btnShowFinished;
-        private System.Windows.Forms.Panel panel8;
+        private System.Windows.Forms.Panel pnlFilterAll;
         private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.Button btnEdit;
         private System.Windows.Forms.Button btnInfo;
         private System.Windows.Forms.Button btnNewEntry;
-        private System.Windows.Forms.Panel panel11;
+        private System.Windows.Forms.Panel pnlFilterFavs;
         private System.Windows.Forms.Button btnShowFavorites;
         private System.Windows.Forms.ImageList imlContentPics;
         private System.Windows.Forms.DateTimePicker dtpLastWatchDate;
@@ -871,7 +871,7 @@
         private System.Windows.Forms.ListBox lbxSort;
         private System.Windows.Forms.Button btnSort;
         private System.Windows.Forms.Label lblSortInfo;
-        private System.Windows.Forms.Panel panel12;
+        private System.Windows.Forms.Panel pnlSort;
     }
 }
 
