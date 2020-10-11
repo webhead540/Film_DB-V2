@@ -47,7 +47,7 @@ namespace Film_BD_V4
         string fileName = "";
         string pictureName = "";
         string picturePath;
-        string backupFileName = "";
+
         string pictureSourcePath = "";
         string selectedGenresText = "";
         #endregion
@@ -139,14 +139,14 @@ namespace Film_BD_V4
             if(filter)
             {
                 pnlNamePart = "pnlFilter";
-                colToSet = colHighlightLV2;
+                colToSet = colHighlightLV1;
             }
             else
             {
                 pnlNamePart = "pnlShow";
-                colToSet = colHighlightLV1;
+                colToSet = colHighlightLV2;
             }
-            foreach (Control C in pnlMain.Controls)
+            foreach (Control C in this.Controls)
             {
                 if (C.GetType() == typeof(System.Windows.Forms.Panel))
                 {
@@ -157,8 +157,11 @@ namespace Film_BD_V4
                     }
                 }
             }
-            //Control fittingPanel = pnlMain.Controls.Find(triggerPanelName,true)[0];
-            //fittingPanel.BackColor = colToSet;
+            
+            Control fittingPanel = this.Controls.Find(triggerPanelName, true)[0];
+            
+            //pnlFilterAll.BackColor = colToSet;
+            fittingPanel.BackColor = colToSet;
         }
         #endregion
         #region vorhandes Anzeigen
@@ -266,6 +269,7 @@ namespace Film_BD_V4
 
         private void btnShowAll_Click(object sender, EventArgs e)
         {
+            changeHighlighting((Control)sender, false);
             livMedia.Visible = true;
             if (currentType == "movie")
             {
@@ -288,6 +292,7 @@ namespace Film_BD_V4
 
         private void btnShowStarted_Click(object sender, EventArgs e)
         {
+            changeHighlighting((Control)sender, false);
             livMedia.Visible = true;
             livMedia.Clear();
             fillGui(createSubList(1));
@@ -295,6 +300,7 @@ namespace Film_BD_V4
 
         private void btnShowFavorites_Click(object sender, EventArgs e)
         {
+            changeHighlighting((Control)sender, false);
             livMedia.Visible = true;
             livMedia.Visible = true;
             fillGui(createSubList(0));
@@ -349,6 +355,7 @@ namespace Film_BD_V4
 
         private void btnShowFinished_Click(object sender, EventArgs e)
         {
+            changeHighlighting((Control)sender, false);
             livMedia.Visible = true;
             livMedia.Clear();
             fillGui(createSubList(2));
@@ -839,9 +846,13 @@ namespace Film_BD_V4
             }
         }
 
+
         #endregion
 
-       
+        private void pnlMain_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 
 }
