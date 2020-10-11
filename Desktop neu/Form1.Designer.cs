@@ -366,7 +366,7 @@
             // lblSortInfo
             // 
             this.lblSortInfo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.lblSortInfo.Location = new System.Drawing.Point(416, 92);
+            this.lblSortInfo.Location = new System.Drawing.Point(92, 92);
             this.lblSortInfo.Name = "lblSortInfo";
             this.lblSortInfo.Size = new System.Drawing.Size(100, 17);
             this.lblSortInfo.TabIndex = 83;
@@ -509,85 +509,89 @@
             // pnlShowFavorites
             // 
             this.pnlShowFavorites.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(48)))), ((int)(((byte)(82)))));
-            this.pnlShowFavorites.Location = new System.Drawing.Point(229, 71);
+            this.pnlShowFavorites.Location = new System.Drawing.Point(229, 80);
             this.pnlShowFavorites.Name = "pnlShowFavorites";
             this.pnlShowFavorites.Size = new System.Drawing.Size(75, 2);
             this.pnlShowFavorites.TabIndex = 126;
             // 
             // btnShowFavorites
             // 
+            this.btnShowFavorites.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(48)))), ((int)(((byte)(54)))));
             this.btnShowFavorites.FlatAppearance.BorderSize = 0;
             this.btnShowFavorites.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnShowFavorites.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.btnShowFavorites.Location = new System.Drawing.Point(229, 51);
+            this.btnShowFavorites.Location = new System.Drawing.Point(229, 55);
             this.btnShowFavorites.Name = "btnShowFavorites";
             this.btnShowFavorites.Size = new System.Drawing.Size(75, 23);
             this.btnShowFavorites.TabIndex = 125;
             this.btnShowFavorites.Text = "Lesezeichen";
-            this.btnShowFavorites.UseVisualStyleBackColor = true;
+            this.btnShowFavorites.UseVisualStyleBackColor = false;
             this.btnShowFavorites.Click += new System.EventHandler(this.btnShowFavorites_Click);
             // 
             // pnlShowStarted
             // 
             this.pnlShowStarted.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(48)))), ((int)(((byte)(82)))));
-            this.pnlShowStarted.Location = new System.Drawing.Point(55, 71);
+            this.pnlShowStarted.Location = new System.Drawing.Point(55, 80);
             this.pnlShowStarted.Name = "pnlShowStarted";
             this.pnlShowStarted.Size = new System.Drawing.Size(75, 2);
             this.pnlShowStarted.TabIndex = 124;
             // 
             // btnShowStarted
             // 
+            this.btnShowStarted.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(48)))), ((int)(((byte)(54)))));
             this.btnShowStarted.FlatAppearance.BorderSize = 0;
             this.btnShowStarted.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnShowStarted.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.btnShowStarted.Location = new System.Drawing.Point(55, 51);
+            this.btnShowStarted.Location = new System.Drawing.Point(55, 55);
             this.btnShowStarted.Name = "btnShowStarted";
             this.btnShowStarted.Size = new System.Drawing.Size(75, 23);
             this.btnShowStarted.TabIndex = 123;
             this.btnShowStarted.Text = "Angefangen";
-            this.btnShowStarted.UseVisualStyleBackColor = true;
+            this.btnShowStarted.UseVisualStyleBackColor = false;
             this.btnShowStarted.Click += new System.EventHandler(this.btnShowStarted_Click);
             // 
             // pnlShowFinished
             // 
             this.pnlShowFinished.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(48)))), ((int)(((byte)(82)))));
-            this.pnlShowFinished.Location = new System.Drawing.Point(136, 71);
+            this.pnlShowFinished.Location = new System.Drawing.Point(136, 80);
             this.pnlShowFinished.Name = "pnlShowFinished";
             this.pnlShowFinished.Size = new System.Drawing.Size(87, 2);
             this.pnlShowFinished.TabIndex = 122;
             // 
             // btnShowFinished
             // 
+            this.btnShowFinished.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(48)))), ((int)(((byte)(54)))));
             this.btnShowFinished.FlatAppearance.BorderSize = 0;
             this.btnShowFinished.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnShowFinished.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.btnShowFinished.Location = new System.Drawing.Point(136, 51);
+            this.btnShowFinished.Location = new System.Drawing.Point(136, 55);
             this.btnShowFinished.Name = "btnShowFinished";
             this.btnShowFinished.Size = new System.Drawing.Size(87, 23);
             this.btnShowFinished.TabIndex = 121;
             this.btnShowFinished.Text = "Abgeschlossen";
-            this.btnShowFinished.UseVisualStyleBackColor = true;
+            this.btnShowFinished.UseVisualStyleBackColor = false;
             this.btnShowFinished.Click += new System.EventHandler(this.btnShowFinished_Click);
             // 
             // pnlShowAll
             // 
             this.pnlShowAll.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(48)))), ((int)(((byte)(82)))));
-            this.pnlShowAll.Location = new System.Drawing.Point(5, 71);
+            this.pnlShowAll.Location = new System.Drawing.Point(5, 80);
             this.pnlShowAll.Name = "pnlShowAll";
             this.pnlShowAll.Size = new System.Drawing.Size(44, 2);
             this.pnlShowAll.TabIndex = 120;
             // 
             // btnShowAll
             // 
+            this.btnShowAll.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(48)))), ((int)(((byte)(54)))));
             this.btnShowAll.FlatAppearance.BorderSize = 0;
             this.btnShowAll.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnShowAll.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.btnShowAll.Location = new System.Drawing.Point(5, 51);
+            this.btnShowAll.Location = new System.Drawing.Point(5, 55);
             this.btnShowAll.Name = "btnShowAll";
             this.btnShowAll.Size = new System.Drawing.Size(44, 23);
             this.btnShowAll.TabIndex = 119;
             this.btnShowAll.Text = "Alle";
-            this.btnShowAll.UseVisualStyleBackColor = true;
+            this.btnShowAll.UseVisualStyleBackColor = false;
             this.btnShowAll.Click += new System.EventHandler(this.btnShowAll_Click);
             // 
             // btnNewEntry
@@ -690,7 +694,7 @@
             // pnlSort
             // 
             this.pnlSort.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(48)))), ((int)(((byte)(82)))));
-            this.pnlSort.Location = new System.Drawing.Point(333, 108);
+            this.pnlSort.Location = new System.Drawing.Point(9, 108);
             this.pnlSort.Name = "pnlSort";
             this.pnlSort.Size = new System.Drawing.Size(65, 2);
             this.pnlSort.TabIndex = 140;
@@ -702,7 +706,7 @@
             this.btnSort.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSort.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSort.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.btnSort.Location = new System.Drawing.Point(325, 89);
+            this.btnSort.Location = new System.Drawing.Point(1, 89);
             this.btnSort.Name = "btnSort";
             this.btnSort.Size = new System.Drawing.Size(85, 22);
             this.btnSort.TabIndex = 139;
@@ -723,7 +727,7 @@
             "Bewertung Ab",
             "Name A-Z",
             "Name Z-A"});
-            this.lbxSort.Location = new System.Drawing.Point(328, 117);
+            this.lbxSort.Location = new System.Drawing.Point(4, 117);
             this.lbxSort.Name = "lbxSort";
             this.lbxSort.Size = new System.Drawing.Size(82, 65);
             this.lbxSort.TabIndex = 138;

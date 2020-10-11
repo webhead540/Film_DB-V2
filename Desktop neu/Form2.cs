@@ -22,7 +22,7 @@ namespace Film_BD_V4
         private void Form2_Load(object sender, EventArgs e)
         {
             this.Location = new Point(Cursor.Position.X - 85, Cursor.Position.Y - 15);
-            lblInfos.Text = "Bewertung: " + m.rating + Environment.NewLine + "zuletzt geschaut am: " + m.lastWatchDate.ToShortDateString()+Environment.NewLine+m.genre;
+            lblInfos.Text = "Bewertung: " + m.rating + Environment.NewLine + "hinzugefügt am: " + m.dateAdded.ToShortDateString()+Environment.NewLine+m.genre;
             if(m.parts>0)
             {
                 lblInfos.Text += Environment.NewLine + "Anzahl Teile: " + m.parts;

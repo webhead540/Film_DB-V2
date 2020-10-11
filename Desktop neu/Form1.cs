@@ -53,8 +53,8 @@ namespace Film_BD_V4
 
         #region Farben
         Color colBack = Color.FromArgb(54, 57, 63);
-        Color colHighlightLV1 = Color.FromArgb(255, 102, 0); //Farbe für Film/Serie/Anime
-        Color colHighlightLV2 = Color.FromArgb(153, 51, 153); //Farbe für Angefangen/Abgeschlossen/Lesezeichen
+        Color colHighlightLV1 = Color.FromArgb(53, 91, 162); //Farbe für Film/Serie/Anime
+        Color colHighlightLV2 = Color.FromArgb(53, 91, 162); //Farbe für Angefangen/Abgeschlossen/Lesezeichen
         Color colDefault = Color.FromArgb(36, 61, 106); //Farbe für nicht gehighlithete Knöpfe
         #endregion
 
