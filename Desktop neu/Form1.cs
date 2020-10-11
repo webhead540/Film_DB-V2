@@ -203,6 +203,7 @@ namespace Film_BD_V4
         private void btnFilterAll_Click(object sender, EventArgs e)
         {
             changeHighlighting((Control) sender, true);
+            changeHighlighting(btnShowAll, false);
             livMedia.Visible = true;
             currentType = "";
             currentList = mt.getAllEntrys();
@@ -212,6 +213,7 @@ namespace Film_BD_V4
         private void btnFilterMovie_Click(object sender, EventArgs e)
         {
             changeHighlighting((Control)sender, true);
+            changeHighlighting(btnShowAll, false);
             livMedia.Visible = true;
             currentType = "movie";
             movies.Clear();
@@ -310,6 +312,7 @@ namespace Film_BD_V4
         private void bbtnFilterSeries_Click(object sender, EventArgs e)
         {
             changeHighlighting((Control)sender, true);
+            changeHighlighting(btnShowAll, false);
             livMedia.Visible = true;
             currentType = "series";
             series.Clear();
@@ -334,6 +337,7 @@ namespace Film_BD_V4
         private void btnFilterAnime_Click(object sender, EventArgs e)
         {
             changeHighlighting((Control)sender, true);
+            changeHighlighting(btnShowAll, false);
             livMedia.Visible = true;
             currentType = "anime";
             anime.Clear();
