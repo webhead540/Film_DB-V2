@@ -39,7 +39,6 @@ namespace Film_BD_V4
         bool infomode = false;
         bool nudPartsOK = false;
         bool isSuggest = false;
-        bool wischListState = false;
         bool alreadyclicked = false;
         #endregion
 
@@ -56,7 +55,7 @@ namespace Film_BD_V4
         Color colBack = Color.FromArgb(54, 57, 63);
         Color colHighlightLV1 = Color.FromArgb(255, 102, 0); //Farbe für Film/Serie/Anime
         Color colHighlightLV2 = Color.FromArgb(153, 51, 153); //Farbe für Angefangen/Abgeschlossen/Lesezeichen
-        Color colDefault = Color.FromArgb(36, 61, 106);
+        Color colDefault = Color.FromArgb(36, 61, 106); //Farbe für nicht gehighlithete Knöpfe
         #endregion
 
 
@@ -84,15 +83,6 @@ namespace Film_BD_V4
             {
                 picturePath = @"Q:\Patrick\Bilder\kamera\Amsterdam August 2012\";
             }
-            /*Point location = Properties.Settings.Default.Location;
-            Size windowSize = Properties.Settings.Default.Size;
-
-            this.Location = location;
-            if (windowSize.Width != 0 && windowSize.Height != 0)
-            {
-                this.Height = windowSize.Height;
-                this.Width = windowSize.Width;
-            }*/
             changeHighlighting(btnFilterAll, true);
             changeHighlighting(btnShowAll, false);
             try
@@ -132,36 +122,47 @@ namespace Film_BD_V4
         }
         private void changeHighlighting(Control trigger, bool filter)
         {
-            string pnlNamePart = "";
-            Color colToSet;
-            string triggerPanelName = "";
-            triggerPanelName = "pnl" + trigger.Name.Substring(3);
-            if(filter)
+            try
             {
-                pnlNamePart = "pnlFilter";
-                colToSet = colHighlightLV1;
-            }
-            else
-            {
-                pnlNamePart = "pnlShow";
-                colToSet = colHighlightLV2;
-            }
-            foreach (Control C in this.Controls)
-            {
-                if (C.GetType() == typeof(System.Windows.Forms.Panel))
+                string pnlNamePart = "";
+                Color colToSet;
+                string triggerPanelName = "";
+                triggerPanelName = "pnl" + trigger.Name.Substring(3);
+                if (filter)
                 {
-                    
-                    if (C.Name.Contains(pnlNamePart))
+                    pnlNamePart = "pnlFilter";
+                    colToSet = colHighlightLV1;
+                }
+                else
+                {
+                    pnlNamePart = "pnlShow";
+                    colToSet = colHighlightLV2;
+                }
+                foreach (Control C in this.Controls)
+                {
+                    if (C.GetType() == typeof(System.Windows.Forms.Panel))
                     {
-                        C.BackColor = colDefault;
+
+                        if (C.Name.Contains(pnlNamePart))
+                        {
+                            C.BackColor = colDefault;
+                        }
                     }
                 }
+
+                Control fittingPanel = this.Controls.Find(triggerPanelName, true)[0];
+
+                fittingPanel.BackColor = colToSet;
+            }
+            catch(IndexOutOfRangeException)
+            {
+                MessageBox.Show("Die Farbe konnte nicht angepasst werden, es konnte kein Steuerelement gefunden werden");
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show("Beim Setzen der Farbe trat folgender Fehler auf: " + ex.Message);
             }
             
-            Control fittingPanel = this.Controls.Find(triggerPanelName, true)[0];
-            
-            //pnlFilterAll.BackColor = colToSet;
-            fittingPanel.BackColor = colToSet;
         }
         #endregion
         #region vorhandes Anzeigen
