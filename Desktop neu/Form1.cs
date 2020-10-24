@@ -22,8 +22,6 @@ namespace Film_BD_V4
             InitializeComponent();
         }
 
-        string currentType = "";
-
         #region globale Variablen
         #region Listen
         List<Media> currentList = new List<Media>();
@@ -46,6 +44,7 @@ namespace Film_BD_V4
         string fileName = "";
         string pictureName = "";
         string picturePath;
+        string currentType;
 
         string pictureSourcePath = "";
         string selectedGenresText = "";
@@ -89,6 +88,11 @@ namespace Film_BD_V4
             {
                 mt = new mediaTools(fileName, picturePath, "");
                 currentList = mt.getAllEntrys();
+                List<string> genreList = mt.getGenreList();
+                foreach(string genre in genreList)
+                {
+                    lbxGenre.Items.Add(genre);
+                }
                 fillGui(currentList);
             }
             
@@ -448,7 +452,6 @@ namespace Film_BD_V4
                         rbnAnime.Checked = true;
                     }
                     List<string> usedGenres = selected.genre.Split('|').ToList();
-                    // ListSelectionWrapper<Media> mediaSelection = new ListSelectionWrapper<Media>(mt.getAllEntrys(),"genre") ;
                     if (usedGenres.Count > 0)
                     {
                         foreach (string genre in usedGenres)
@@ -457,7 +460,7 @@ namespace Film_BD_V4
                             string genreT = genre.Trim();
                             if (genreT.Length > 0)
                             {
-                                //cbcGenreAdd.CheckBoxItems[genreT].Checked = true;
+
                             }
 
                         }
@@ -647,7 +650,11 @@ namespace Film_BD_V4
             {
                 args.Add(dtpWatchdate.Value.ToShortDateString());
             }
-
+            if(cbxStarted.Checked)
+            {
+                args.Add("true");//angefangen Flag
+                args.Add("false");//abgeschlossen Flag
+            }
             try
             {
                 if (mt.createNewEntry(args.ToArray(), pictureSourcePath, currentid))
@@ -810,6 +817,7 @@ namespace Film_BD_V4
             { 
                 dtpWatchdate.Enabled = false;
                 nudRating.Enabled = false;
+                cbxStarted.Checked = false;
             }
             else
             {
@@ -850,14 +858,47 @@ namespace Film_BD_V4
                 btnInfo.BackColor = colBack;
             }
         }
+        private void cbxStarted_CheckedChanged(object sender, EventArgs e)
+        {
+            if (cbxStarted.Checked)
+            {
+                cbxAddWishList.Checked = false;
+            }
+        }
 
+        private void btnGenre_Click(object sender, EventArgs e)
+        {
+            if (lbxGenre.Visible)
+            {
+                string filterType;
+                List<string> genreList = new List<string>();
+                List<Media> currentList = new List<Media>();
+                if(currentType =="movie")
+                {
+                    filterType = "Film";
+                }
+                else if(currentType =="series")
+                {
+                    filterType = "Serie";
+                }
+                else
+                {
+                    filterType = "Anime";
+                }
+                string[] types = new string[3] { filterType, "", "" };
+                foreach(string s in lbxGenre.SelectedItems)
+                {
+                    genreList.Add(s);
+                }
+                mt.filterList(types, true, genreList);
 
+            }
+            lbxGenre.Visible = !lbxGenre.Visible;
+            
+        }
         #endregion
 
-        private void pnlMain_Paint(object sender, PaintEventArgs e)
-        {
 
-        }
     }
 
 }

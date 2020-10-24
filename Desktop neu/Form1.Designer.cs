@@ -55,12 +55,6 @@
             this.tmrHide = new System.Windows.Forms.Timer(this.components);
             this.ofdImageSelect = new System.Windows.Forms.OpenFileDialog();
             this.ttpInfo = new System.Windows.Forms.ToolTip(this.components);
-            this.lblSortInfo = new System.Windows.Forms.Label();
-            this.img1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.img2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.img3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.img4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.livMedia = new System.Windows.Forms.ListView();
             this.pbxBackLV1 = new System.Windows.Forms.PictureBox();
             this.pnlFilterAll = new System.Windows.Forms.Panel();
             this.pnlFilterMovie = new System.Windows.Forms.Panel();
@@ -89,7 +83,17 @@
             this.lblDelmode = new System.Windows.Forms.Label();
             this.pnlSort = new System.Windows.Forms.Panel();
             this.btnSort = new System.Windows.Forms.Button();
+            this.btnGenre = new System.Windows.Forms.Button();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.cbxStarted = new System.Windows.Forms.CheckBox();
+            this.livMedia = new System.Windows.Forms.ListView();
+            this.img1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.img2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.img3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.img4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.lbxSort = new System.Windows.Forms.ListBox();
+            this.lbxGenre = new System.Windows.Forms.ListBox();
+            this.lblSortInfo = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pbxOK)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxPreview)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudParts)).BeginInit();
@@ -142,7 +146,7 @@
             // pbxOK
             // 
             this.pbxOK.Image = ((System.Drawing.Image)(resources.GetObject("pbxOK.Image")));
-            this.pbxOK.Location = new System.Drawing.Point(105, 146);
+            this.pbxOK.Location = new System.Drawing.Point(104, 146);
             this.pbxOK.Name = "pbxOK";
             this.pbxOK.Size = new System.Drawing.Size(36, 36);
             this.pbxOK.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -362,39 +366,6 @@
             // ofdImageSelect
             // 
             this.ofdImageSelect.FileName = "openFileDialog1";
-            // 
-            // lblSortInfo
-            // 
-            this.lblSortInfo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.lblSortInfo.Location = new System.Drawing.Point(92, 92);
-            this.lblSortInfo.Name = "lblSortInfo";
-            this.lblSortInfo.Size = new System.Drawing.Size(100, 17);
-            this.lblSortInfo.TabIndex = 83;
-            // 
-            // livMedia
-            // 
-            this.livMedia.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(57)))), ((int)(((byte)(63)))));
-            this.livMedia.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.livMedia.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.img1,
-            this.img2,
-            this.img3,
-            this.img4});
-            this.livMedia.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.livMedia.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.livMedia.ForeColor = System.Drawing.Color.White;
-            this.livMedia.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.None;
-            this.livMedia.HideSelection = false;
-            this.livMedia.LargeImageList = this.imlContentPics;
-            this.livMedia.Location = new System.Drawing.Point(0, 117);
-            this.livMedia.MultiSelect = false;
-            this.livMedia.Name = "livMedia";
-            this.livMedia.Size = new System.Drawing.Size(1111, 520);
-            this.livMedia.SmallImageList = this.imlContentPics;
-            this.livMedia.TabIndex = 80;
-            this.livMedia.UseCompatibleStateImageBehavior = false;
-            this.livMedia.DrawItem += new System.Windows.Forms.DrawListViewItemEventHandler(this.LivMedia_DrawItem);
-            this.livMedia.SelectedIndexChanged += new System.EventHandler(this.livMedia_SelectedIndexChanged);
             // 
             // pbxBackLV1
             // 
@@ -714,6 +685,64 @@
             this.btnSort.UseVisualStyleBackColor = false;
             this.btnSort.Click += new System.EventHandler(this.btnSort_Click);
             // 
+            // btnGenre
+            // 
+            this.btnGenre.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(57)))), ((int)(((byte)(63)))));
+            this.btnGenre.FlatAppearance.BorderSize = 0;
+            this.btnGenre.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnGenre.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnGenre.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnGenre.Location = new System.Drawing.Point(199, 89);
+            this.btnGenre.Name = "btnGenre";
+            this.btnGenre.Size = new System.Drawing.Size(60, 22);
+            this.btnGenre.TabIndex = 141;
+            this.btnGenre.Text = "Genre";
+            this.btnGenre.UseVisualStyleBackColor = false;
+            this.btnGenre.Click += new System.EventHandler(this.btnGenre_Click);
+            // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(48)))), ((int)(((byte)(82)))));
+            this.panel1.Location = new System.Drawing.Point(199, 108);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(55, 2);
+            this.panel1.TabIndex = 142;
+            // 
+            // cbxStarted
+            // 
+            this.cbxStarted.AutoSize = true;
+            this.cbxStarted.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.cbxStarted.Location = new System.Drawing.Point(399, 399);
+            this.cbxStarted.Name = "cbxStarted";
+            this.cbxStarted.Size = new System.Drawing.Size(84, 17);
+            this.cbxStarted.TabIndex = 143;
+            this.cbxStarted.Text = "Angefangen";
+            this.cbxStarted.UseVisualStyleBackColor = true;
+            this.cbxStarted.CheckedChanged += new System.EventHandler(this.cbxStarted_CheckedChanged);
+            // 
+            // livMedia
+            // 
+            this.livMedia.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(57)))), ((int)(((byte)(63)))));
+            this.livMedia.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.livMedia.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.img1,
+            this.img2,
+            this.img3,
+            this.img4});
+            this.livMedia.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.livMedia.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.livMedia.ForeColor = System.Drawing.Color.White;
+            this.livMedia.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.None;
+            this.livMedia.HideSelection = false;
+            this.livMedia.LargeImageList = this.imlContentPics;
+            this.livMedia.Location = new System.Drawing.Point(0, 111);
+            this.livMedia.MultiSelect = false;
+            this.livMedia.Name = "livMedia";
+            this.livMedia.Size = new System.Drawing.Size(1111, 526);
+            this.livMedia.SmallImageList = this.imlContentPics;
+            this.livMedia.TabIndex = 144;
+            this.livMedia.UseCompatibleStateImageBehavior = false;
+            // 
             // lbxSort
             // 
             this.lbxSort.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(57)))), ((int)(((byte)(63)))));
@@ -727,12 +756,34 @@
             "Bewertung Ab",
             "Name A-Z",
             "Name Z-A"});
-            this.lbxSort.Location = new System.Drawing.Point(4, 117);
+            this.lbxSort.Location = new System.Drawing.Point(5, 117);
             this.lbxSort.Name = "lbxSort";
             this.lbxSort.Size = new System.Drawing.Size(82, 65);
-            this.lbxSort.TabIndex = 138;
+            this.lbxSort.TabIndex = 145;
             this.lbxSort.Visible = false;
             this.lbxSort.SelectedIndexChanged += new System.EventHandler(this.lbxSort_SelectedIndexChanged);
+            // 
+            // lbxGenre
+            // 
+            this.lbxGenre.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(57)))), ((int)(((byte)(63)))));
+            this.lbxGenre.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.lbxGenre.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.lbxGenre.FormattingEnabled = true;
+            this.lbxGenre.Location = new System.Drawing.Point(182, 116);
+            this.lbxGenre.Name = "lbxGenre";
+            this.lbxGenre.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
+            this.lbxGenre.Size = new System.Drawing.Size(92, 104);
+            this.lbxGenre.TabIndex = 146;
+            this.lbxGenre.Visible = false;
+            // 
+            // lblSortInfo
+            // 
+            this.lblSortInfo.AutoSize = true;
+            this.lblSortInfo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.lblSortInfo.Location = new System.Drawing.Point(87, 96);
+            this.lblSortInfo.Name = "lblSortInfo";
+            this.lblSortInfo.Size = new System.Drawing.Size(0, 13);
+            this.lblSortInfo.TabIndex = 147;
             // 
             // Form1
             // 
@@ -740,9 +791,15 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(57)))), ((int)(((byte)(63)))));
             this.ClientSize = new System.Drawing.Size(1111, 637);
+            this.Controls.Add(this.lblSortInfo);
+            this.Controls.Add(this.lbxGenre);
+            this.Controls.Add(this.lbxSort);
+            this.Controls.Add(this.livMedia);
+            this.Controls.Add(this.cbxStarted);
+            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.btnGenre);
             this.Controls.Add(this.pnlSort);
             this.Controls.Add(this.btnSort);
-            this.Controls.Add(this.lbxSort);
             this.Controls.Add(this.lblDelmode);
             this.Controls.Add(this.panel5);
             this.Controls.Add(this.pbxSearch);
@@ -769,8 +826,6 @@
             this.Controls.Add(this.btnFilterMovie);
             this.Controls.Add(this.btnFilterAnime);
             this.Controls.Add(this.pbxBackLV1);
-            this.Controls.Add(this.lblSortInfo);
-            this.Controls.Add(this.livMedia);
             this.Controls.Add(this.dtpLastWatchDate);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -836,12 +891,6 @@
         private System.Windows.Forms.Timer tmrHide;
         private System.Windows.Forms.OpenFileDialog ofdImageSelect;
         private System.Windows.Forms.ToolTip ttpInfo;
-        private System.Windows.Forms.Label lblSortInfo;
-        private System.Windows.Forms.ColumnHeader img1;
-        private System.Windows.Forms.ColumnHeader img2;
-        private System.Windows.Forms.ColumnHeader img3;
-        private System.Windows.Forms.ColumnHeader img4;
-        private System.Windows.Forms.ListView livMedia;
         private System.Windows.Forms.PictureBox pbxBackLV1;
         private System.Windows.Forms.Panel pnlFilterAll;
         private System.Windows.Forms.Panel pnlFilterMovie;
@@ -870,7 +919,17 @@
         private System.Windows.Forms.Label lblDelmode;
         private System.Windows.Forms.Panel pnlSort;
         private System.Windows.Forms.Button btnSort;
+        private System.Windows.Forms.Button btnGenre;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.CheckBox cbxStarted;
+        private System.Windows.Forms.ListView livMedia;
+        private System.Windows.Forms.ColumnHeader img1;
+        private System.Windows.Forms.ColumnHeader img2;
+        private System.Windows.Forms.ColumnHeader img3;
+        private System.Windows.Forms.ColumnHeader img4;
         private System.Windows.Forms.ListBox lbxSort;
+        private System.Windows.Forms.ListBox lbxGenre;
+        private System.Windows.Forms.Label lblSortInfo;
     }
 }
 

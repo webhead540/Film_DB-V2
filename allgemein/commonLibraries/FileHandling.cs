@@ -103,7 +103,9 @@ namespace commonLibraries
                     content.Add(m);
                     curIndex++;
                 }
-                genres = genres.Distinct().ToList();
+                HashSet<string> h = new HashSet<string>(genres);
+                genres = h.ToList();
+                genres.Sort();
                 return content;
             }
             catch (Exception ex)
@@ -215,6 +217,8 @@ namespace commonLibraries
         }
         internal void parseGenreString(string genreString)
         {
+            genreString = genreString.Trim().Replace(" ","");
+
             if(genreString!=null&&genreString!="")
             {
                 genres.AddRange(genreString.Split('|'));
