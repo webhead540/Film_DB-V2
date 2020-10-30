@@ -306,9 +306,9 @@
             this.cbxAddWishList.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.cbxAddWishList.Location = new System.Drawing.Point(400, 376);
             this.cbxAddWishList.Name = "cbxAddWishList";
-            this.cbxAddWishList.Size = new System.Drawing.Size(84, 17);
+            this.cbxAddWishList.Size = new System.Drawing.Size(86, 17);
             this.cbxAddWishList.TabIndex = 67;
-            this.cbxAddWishList.Text = "Wunschliste";
+            this.cbxAddWishList.Text = "Lesezeichen";
             this.cbxAddWishList.UseVisualStyleBackColor = true;
             this.cbxAddWishList.CheckedChanged += new System.EventHandler(this.cbxAddWishList_CheckedChanged);
             // 
@@ -735,13 +735,14 @@
             this.livMedia.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.None;
             this.livMedia.HideSelection = false;
             this.livMedia.LargeImageList = this.imlContentPics;
-            this.livMedia.Location = new System.Drawing.Point(0, 111);
+            this.livMedia.Location = new System.Drawing.Point(0, 112);
             this.livMedia.MultiSelect = false;
             this.livMedia.Name = "livMedia";
-            this.livMedia.Size = new System.Drawing.Size(1111, 526);
+            this.livMedia.Size = new System.Drawing.Size(1111, 525);
             this.livMedia.SmallImageList = this.imlContentPics;
             this.livMedia.TabIndex = 144;
             this.livMedia.UseCompatibleStateImageBehavior = false;
+            this.livMedia.SelectedIndexChanged += new System.EventHandler(this.livMedia_SelectedIndexChanged);
             // 
             // lbxSort
             // 
