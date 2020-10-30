@@ -655,6 +655,20 @@ namespace Film_BD_V4
                 args.Add("true");//angefangen Flag
                 args.Add("false");//abgeschlossen Flag
             }
+            else
+            {
+                if(cbxAddWishList.Checked)
+                {
+                    args.Add("false"); //angefangen flag
+                    args.Add("false"); //abgeschlossen flag
+                }
+                else
+                {
+                    args.Add("false");//angefangen flag
+                    args.Add("true");//abgeschlossen Flag
+
+                }
+            }
             try
             {
                 if (mt.createNewEntry(args.ToArray(), pictureSourcePath, currentid))
