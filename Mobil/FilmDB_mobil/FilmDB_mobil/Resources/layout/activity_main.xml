@@ -19,9 +19,18 @@
 
     <include
         layout="@layout/content_main"
-        //>android:layout_marginRight="0.0dp"
+        android:layout_marginRight="0.0dp"
         android:layout_width="wrap_content"
         android:id="@+id/include1" />
+
+    <ImageView
+        android:layout_width="420.0dp"
+        android:layout_height="70.0dp"
+        android:translationY="65.0dp"
+        android:translationX="0.0dp"
+        app:backgroundTint="#ff2e3036"
+        android:background="#ff2e3036"
+        android:id="@+id/imageView1"/>
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/fab"
@@ -34,34 +43,34 @@
     <Button
         android:text="Vorschlag"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="50.0dp"
         android:id="@+id/btn_suggest"
         android:layout_marginBottom="0.0dp"
-        android:translationY="10.0dp"
-        android:translationX="7.0dp"
-        android:paddingEnd="20.0dp"
-        android:paddingLeft="20.0dp"
-        android:background="#ff36393f"
-        android:textColor="#ffe0e0e0" />
+        android:translationY="15.0dp"
+        android:translationX="0.0dp"
+        android:paddingEnd="35.0dp"
+        android:paddingLeft="35.0dp"
+        android:background="#FF25272C"
+        android:textColor="#ffe0e0e0"/>
     <Button
         android:text="Filtern"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="50.0dp"
         android:id="@+id/btn_Filter"
         android:layout_marginBottom="0.0dp"
-        android:translationY="10.0dp"
-        android:translationX="200.0dp"
-        android:paddingEnd="45.0dp"
-        android:paddingLeft="45.0dp"
-        android:background="#ff36393f"
-        android:textColor="#ffe0e0e0" />
+        android:translationY="15.0dp"
+        android:translationX="170.0dp"
+        android:paddingEnd="50.0dp"
+        android:paddingLeft="50.0dp"
+        android:background="#FF25272C"
+        android:textColor="#ffe0e0e0"/>
     <CheckBox
         android:text="Film"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/cbxMovie"
         android:layout_marginBottom="0.0dp"
-        android:translationY="55.0dp"
+        android:translationY="70.0dp"
         android:textColor="#ffe0e0e0" />
     <CheckBox
         android:text="Serie"
@@ -69,8 +78,8 @@
         android:layout_height="wrap_content"
         android:id="@+id/cbxSeries"
         android:layout_marginBottom="0.0dp"
-        android:translationY="55.0dp"
-        android:translationX="70.0dp"
+        android:translationY="70.0dp"
+        android:translationX="75.0dp"
         android:textColor="#ffe0e0e0" />
     <CheckBox
         android:text="Anime"
@@ -78,8 +87,8 @@
         android:layout_height="wrap_content"
         android:id="@+id/cbxAnime"
         android:layout_marginBottom="0.0dp"
-        android:translationY="55.0dp"
-        android:translationX="150.0dp"
+        android:translationY="100.0dp"
+        android:translationX="0.0dp"
         android:textColor="#ffe0e0e0" />
     <CheckBox
         android:text="Wunschliste"
@@ -87,7 +96,8 @@
         android:layout_height="wrap_content"
         android:id="@+id/cbxWishlist"
         android:layout_marginBottom="0.0dp"
-        android:translationY="95.0dp"
+        android:translationY="100.0dp"
+        android:translationX="75.0dp"
         android:textColor="#ffe0e0e0" />
     <GridView
         android:minWidth="25px"
@@ -106,19 +116,50 @@
     <Button
         android:text="suchen"
         android:layout_width="80.0dp"
-        android:layout_height="20.0dp"
-        android:translationY="102.0dp"
-        android:translationX="285.0dp"
+        android:layout_height="25.0dp"
+        android:translationY="75.0dp"
+        android:translationX="335.0dp"
         android:background="#ff36393f"
         android:textColor="#ffe0e0e0" 
         android:id="@+id/btnSearch" />
     <EditText
 
-        android:layout_width="170.0dp"
+        android:layout_width="165.0dp"
         android:layout_height="wrap_content"
-        android:translationY="103.0dp"
-        android:translationX="115.0dp"
+        android:translationY="75.0dp"
+        android:translationX="170.0dp"
         android:id="@+id/tbxSearch"
         android:background="#ff323238"
         android:textColor="#ffe0e0e0"/>
+
+    <ImageView
+        android:minWidth="25px"
+        android:minHeight="25px"
+        android:layout_width="420.0dp"
+        android:layout_height="70.0dp"
+        android:id="@+id/imageView2"
+        app:backgroundTint="#FF25272C"
+        android:background="#ff25272c" />
+    <ImageView
+        android:minWidth="25px"
+        android:minHeight="25px"
+        android:layout_width="158.0dp"
+        android:layout_height="2.0dp"
+        android:translationY="65.0dp"
+        android:translationX="1.0dp"
+        android:id="@+id/imageView3"
+        android:background="#FF243D6A"
+        app:backgroundTint="#FF243D6A" />
+
+    <ImageView
+        android:minWidth="25px"
+        android:minHeight="25px"
+        android:layout_width="158.0dp"
+        android:layout_height="2.0dp"
+        android:translationY="65.0dp"
+        android:translationX="170.0dp"
+        android:id="@+id/imageView4"
+        android:background="#FF243D6A"
+        app:backgroundTint="#FF243D6A" />
+    
 </android.support.design.widget.CoordinatorLayout>
