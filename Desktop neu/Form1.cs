@@ -671,12 +671,12 @@ namespace Film_BD_V4
             }
             try
             {
+                currentid = mt.getlastID()+1;
                 if (mt.createNewEntry(args.ToArray(), pictureSourcePath, currentid))
                 {
                     tmrHide.Start();
                     pbxOK.Visible = true;
                     fillGui(mt.getFilteredList());
-                    changeEditMode();
                     alreadyclicked = false;
 
                 }

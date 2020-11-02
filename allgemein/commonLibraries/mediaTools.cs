@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using System.Collections.Generic;
+using System.Security.Cryptography.X509Certificates;
 
 namespace commonLibraries
 {
@@ -260,6 +261,10 @@ namespace commonLibraries
         public void clearFileList()
         {
             fh.clearEntrys();
+        }
+        public int getlastID()
+        {
+            return content.Max(x => x.id);
         }
     }
 }
