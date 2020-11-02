@@ -255,7 +255,7 @@ namespace Film_BD_V4
             }
             else
             {
-                worklist = currentList;
+                worklist = mt.getAllEntrys();
             }
             if(type==0)
             {
