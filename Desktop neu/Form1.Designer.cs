@@ -94,6 +94,7 @@
             this.lbxSort = new System.Windows.Forms.ListBox();
             this.lbxGenre = new System.Windows.Forms.ListBox();
             this.lblSortInfo = new System.Windows.Forms.Label();
+            this.btnSelect = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pbxOK)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxPreview)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudParts)).BeginInit();
@@ -786,12 +787,24 @@
             this.lblSortInfo.Size = new System.Drawing.Size(0, 13);
             this.lblSortInfo.TabIndex = 147;
             // 
+            // btnSelect
+            // 
+            this.btnSelect.Location = new System.Drawing.Point(179, 224);
+            this.btnSelect.Name = "btnSelect";
+            this.btnSelect.Size = new System.Drawing.Size(95, 23);
+            this.btnSelect.TabIndex = 148;
+            this.btnSelect.Text = "auswählen";
+            this.btnSelect.UseVisualStyleBackColor = true;
+            this.btnSelect.Visible = false;
+            this.btnSelect.Click += new System.EventHandler(this.btnSelect_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(57)))), ((int)(((byte)(63)))));
             this.ClientSize = new System.Drawing.Size(1111, 637);
+            this.Controls.Add(this.btnSelect);
             this.Controls.Add(this.lblSortInfo);
             this.Controls.Add(this.lbxGenre);
             this.Controls.Add(this.lbxSort);
@@ -931,6 +944,7 @@
         private System.Windows.Forms.ListBox lbxSort;
         private System.Windows.Forms.ListBox lbxGenre;
         private System.Windows.Forms.Label lblSortInfo;
+        private System.Windows.Forms.Button btnSelect;
     }
 }
 

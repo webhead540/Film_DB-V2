@@ -41,7 +41,6 @@ namespace commonLibraries
             removeDummyEntrys(content);
             filteredList = content.FindAll(x => x.wishList == false);
             addDummyEntrys(filteredList);
-            //shuffleList();
             currentList.Clear();
             currentList.AddRange(filteredList);
             return filteredList;
@@ -60,17 +59,13 @@ namespace commonLibraries
             removeDummyEntrys(filteredList);
             lastWischlistState = wischList;
             workList= content.FindAll(x => x.wishList == wischList);
-            //List<string> allGenres = getGenreList();
+
             if(genres!=null)
             {
                 List<Media> tempList = new List<Media>();
                 foreach(Media m in workList)
                 {
                     List<string> entryGenres = m.genre.Split('|').ToList();
-                    /*if (entryGenres.Any(x => genres.Any(y => y == x)))
-                    {
-                        tempList.Add(m);
-                    }*/
                     foreach(string entry in genres)
                     {
                         string trimmed = entry.Trim();
@@ -84,7 +79,7 @@ namespace commonLibraries
                 }
                 workList.Clear();
                 workList.AddRange(tempList);
-                //workList = workList.FindAll(x => x.genre.Contains(genres));
+
             }
             
             List<Media> loopList = new List<Media>();
@@ -106,12 +101,6 @@ namespace commonLibraries
 
             addDummyEntrys(filteredList);
             filteredList.OrderBy(x => x.id);
-            /*if (type != "")
-            {
-                filteredList.Clear();
-                filteredList.AddRange(workList.FindAll(x => x.type == type));
-            }*/
-            //shuffleList();
         }
         private void shuffleList()
         {
@@ -150,8 +139,6 @@ namespace commonLibraries
                     suggestions.Add(randomList[i]);
                 }
                 currentpos += 4;
-                //currentList.Clear();
-                //currentList.AddRange(suggestions);
                 return suggestions;
             }
             else

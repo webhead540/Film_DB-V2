@@ -213,7 +213,6 @@ namespace Film_BD_V4
             currentList = mt.getAllEntrys();
             fillGui(currentList);
         }
-
         private void btnFilterMovie_Click(object sender, EventArgs e)
         {
             changeHighlighting((Control)sender, true);
@@ -336,8 +335,6 @@ namespace Film_BD_V4
             }
             fillGui(series);
         }
-
-
         private void btnFilterAnime_Click(object sender, EventArgs e)
         {
             changeHighlighting((Control)sender, true);
@@ -591,7 +588,6 @@ namespace Film_BD_V4
             {
                 tbxLink.Text = "http://" + tbxLink.Text;
             }
-            //Media m;
 
             args.AddRange(new string[] { tbxName.Text, tbxLink.Text, dtpWatchdate.Value.ToShortDateString() });
             args.Add(nudRating.Value.ToString());
@@ -622,24 +618,6 @@ namespace Film_BD_V4
             {
                 args.Add("False");
             }
-            /*if(cbcGenreAdd.Text.Length>0)
-            {
-                HashSet<string> hSelectecGenres = cbcGenreAdd.Text.Split(',').Select(s => s.Trim()).ToHashSet();
-                selectedGenres = hSelectecGenres.ToList();
-
-                if(selectedGenres.Count>1)
-                {
-                    foreach (string genre in selectedGenres)
-                    {
-                        selectedGenresText += genre.Trim() + "|";
-                    }
-                }
-                else
-                {
-                    selectedGenresText = selectedGenres[0];
-                }
-
-            }*/
             args.Add(selectedGenresText);
 
             if (lastWatch != DateTime.MinValue)
@@ -882,37 +860,46 @@ namespace Film_BD_V4
 
         private void btnGenre_Click(object sender, EventArgs e)
         {
-            if (lbxGenre.Visible)
-            {
-                string filterType;
-                List<string> genreList = new List<string>();
-                List<Media> currentList = new List<Media>();
-                if(currentType =="movie")
-                {
-                    filterType = "Film";
-                }
-                else if(currentType =="series")
-                {
-                    filterType = "Serie";
-                }
-                else
-                {
-                    filterType = "Anime";
-                }
-                string[] types = new string[3] { filterType, "", "" };
-                foreach(string s in lbxGenre.SelectedItems)
-                {
-                    genreList.Add(s);
-                }
-                mt.filterList(types, true, genreList);
-
-            }
             lbxGenre.Visible = !lbxGenre.Visible;
-            
+            btnSelect.Visible =! btnSelect.Visible;
         }
+
         #endregion
 
+        private void btnSelect_Click(object sender, EventArgs e)
+        {
+            lbxGenre.Visible = false;
+            btnSelect.Visible = false;
+            string[] types;
+            List<string> genreList = new List<string>();
+            List<Media> currentList = new List<Media>();
+            if (currentType == "movie")
+            {
+                types = new string[3] { "Film", "", "" };
+            }
+            else if (currentType == "series")
+            {
+                types = new string[3] { "", "Serie", "" };
+            }
+            else if (currentType == "anime")
+            {
+                types = new string[3] { "", "", "Anime" };
+            }
+            else
+            {
+                types = new string[3] { "Film", "Serie", "Anime" };
+            }
 
+            foreach (string s in lbxGenre.SelectedItems)
+            {
+                genreList.Add(s);
+            }
+            mt.filterList(types, true, genreList);
+            currentList.AddRange(mt.getFilteredList());
+            mt.filterList(types, false, genreList);
+            currentList.AddRange(mt.getFilteredList());
+            fillGui(currentList, true);
+        }
     }
 
 }
