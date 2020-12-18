@@ -568,6 +568,7 @@
             // 
             // btnNewEntry
             // 
+            this.btnNewEntry.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(48)))), ((int)(((byte)(54)))));
             this.btnNewEntry.FlatAppearance.BorderSize = 0;
             this.btnNewEntry.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnNewEntry.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(48)))), ((int)(((byte)(54)))));
@@ -576,7 +577,7 @@
             this.btnNewEntry.Name = "btnNewEntry";
             this.btnNewEntry.Size = new System.Drawing.Size(42, 35);
             this.btnNewEntry.TabIndex = 130;
-            this.btnNewEntry.UseVisualStyleBackColor = true;
+            this.btnNewEntry.UseVisualStyleBackColor = false;
             this.btnNewEntry.Click += new System.EventHandler(this.btnNewEntry_Click);
             // 
             // btnEdit
@@ -594,6 +595,7 @@
             // 
             // btnInfo
             // 
+            this.btnInfo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(48)))), ((int)(((byte)(54)))));
             this.btnInfo.FlatAppearance.BorderSize = 0;
             this.btnInfo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnInfo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(48)))), ((int)(((byte)(54)))));
@@ -602,11 +604,12 @@
             this.btnInfo.Name = "btnInfo";
             this.btnInfo.Size = new System.Drawing.Size(42, 35);
             this.btnInfo.TabIndex = 129;
-            this.btnInfo.UseVisualStyleBackColor = true;
+            this.btnInfo.UseVisualStyleBackColor = false;
             this.btnInfo.Click += new System.EventHandler(this.btnInfo_Click);
             // 
             // btnDelete
             // 
+            this.btnDelete.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(48)))), ((int)(((byte)(54)))));
             this.btnDelete.FlatAppearance.BorderSize = 0;
             this.btnDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDelete.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(48)))), ((int)(((byte)(54)))));
@@ -615,7 +618,7 @@
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(34, 35);
             this.btnDelete.TabIndex = 127;
-            this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.UseVisualStyleBackColor = false;
             this.btnDelete.Click += new System.EventHandler(this.BtnDelete_Click);
             // 
             // panel5
@@ -654,6 +657,7 @@
             // lblDelmode
             // 
             this.lblDelmode.AutoSize = true;
+            this.lblDelmode.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(48)))), ((int)(((byte)(54)))));
             this.lblDelmode.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDelmode.ForeColor = System.Drawing.Color.Red;
             this.lblDelmode.Location = new System.Drawing.Point(818, 60);
