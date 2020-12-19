@@ -38,7 +38,7 @@ namespace Film_BD_V4
         bool infomode = false;
         bool nudPartsOK = false;
         bool isSuggest = false;
-        bool alreadyclicked = false;
+       
         #endregion
 
         #region Strings
@@ -46,7 +46,6 @@ namespace Film_BD_V4
         string pictureName = "";
         string picturePath;
         string currentType;
-
         string pictureSourcePath = "";
         string selectedGenresText = "";
         #endregion
@@ -61,6 +60,8 @@ namespace Film_BD_V4
 
         #region integer
         int currentid;
+        int wishlistFilterState=-1;
+        int progressFilterState = -1;
         #endregion
         #region Objekte
         mediaTools mt;
@@ -296,6 +297,8 @@ namespace Film_BD_V4
                 currentList = mt.getAllEntrys();
                 fillGui(currentList);
             }
+            wishlistFilterState = -1;
+            progressFilterState = -1;
         }
 
         private void btnShowStarted_Click(object sender, EventArgs e)
@@ -304,14 +307,26 @@ namespace Film_BD_V4
             livMedia.Visible = true;
             livMedia.Clear();
             fillGui(createSubList(1));
+            wishlistFilterState = 0;
+            progressFilterState = 0;
         }
-
+        private void btnShowFinished_Click(object sender, EventArgs e)
+        {
+            changeHighlighting((Control)sender, false);
+            livMedia.Visible = true;
+            livMedia.Clear();
+            fillGui(createSubList(2));
+            wishlistFilterState = 0;
+            progressFilterState = 1;
+        }
         private void btnShowFavorites_Click(object sender, EventArgs e)
         {
             changeHighlighting((Control)sender, false);
             livMedia.Visible = true;
             livMedia.Visible = true;
             fillGui(createSubList(0));
+            wishlistFilterState = 1;
+            progressFilterState = 2;
         }
 
         private void bbtnFilterSeries_Click(object sender, EventArgs e)
@@ -361,13 +376,7 @@ namespace Film_BD_V4
             fillGui(anime);
         }
 
-        private void btnShowFinished_Click(object sender, EventArgs e)
-        {
-            changeHighlighting((Control)sender, false);
-            livMedia.Visible = true;
-            livMedia.Clear();
-            fillGui(createSubList(2));
-        }
+
 
         private void btnEdit_Click(object sender, EventArgs e)
         {
@@ -407,7 +416,7 @@ namespace Film_BD_V4
         }
         private void livMedia_SelectedIndexChanged(object sender, EventArgs e)
         {
-            alreadyclicked = true;
+
             if (livMedia.SelectedItems.Count == 1)
             {
                 Media selected = currentList[livMedia.SelectedItems[0].Index];
@@ -482,7 +491,7 @@ namespace Film_BD_V4
                     {
                         Process.Start(link);
                     }
-                    alreadyclicked = false;
+
                 }
             }
         }
@@ -606,10 +615,31 @@ namespace Film_BD_V4
             {
                 genreList.Add(s);
             }
-            mt.filterList(types, true, genreList);
-            currentList.AddRange(mt.getFilteredList());
-            mt.filterList(types, false, genreList);
-            currentList.AddRange(mt.getFilteredList());
+            if(wishlistFilterState==1||wishlistFilterState==-1)
+            {
+                mt.filterList(types, true, genreList);
+                currentList.AddRange(mt.getFilteredList());
+            }
+            else if(wishlistFilterState==0||wishlistFilterState==-1)
+            {
+                mt.filterList(types, false, genreList);
+                currentList.AddRange(mt.getFilteredList());
+            }
+            switch(progressFilterState)
+            {
+                case 0:
+                    currentList.RemoveAll(x => x.finished == true);
+                    break;
+                case 1:
+                    currentList.RemoveAll(x => x.finished == false);
+                    break;
+                case 2:
+                    currentList.RemoveAll(x => x.finished == true);
+                    currentList.RemoveAll(x => x.finished == false);
+                    break;
+                case -1:
+                    break;
+            }
             fillGui(currentList, true);
         }
         private void btnShowHide_Click(object sender, EventArgs e)
@@ -704,7 +734,6 @@ namespace Film_BD_V4
                     tmrHide.Start();
                     pbxOK.Visible = true;
                     fillGui(mt.getFilteredList());
-                    alreadyclicked = false;
 
                 }
                 else
@@ -916,13 +945,12 @@ namespace Film_BD_V4
                 foreach (string s in lbxGenreAdd.SelectedItems)
                 {
                     newEntryGenreList.Add(s);
+                    tbxGenreAddDropdown.Text += s + "; ";
                 }
+                tbxGenreAddDropdown.Text = tbxGenreAddDropdown.Text.Substring(0, tbxGenreAddDropdown.Text.Length - 1);
             }
             lbxGenreAdd.Visible = !lbxGenreAdd.Visible;
         }
-
-        #endregion
-
         private void btnNewGenre_Click(object sender, EventArgs e)
         {
             tbxNewGenre.Visible = true;
@@ -936,6 +964,14 @@ namespace Film_BD_V4
             lbxGenre.Items.Add(newGenre);
             tbxNewGenre.Visible = false;
             pbxSaveNewGenre.Visible = false;
+        }
+
+
+        #endregion
+
+        private void lbxGenreAdd_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 
