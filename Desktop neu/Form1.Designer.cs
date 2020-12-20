@@ -662,6 +662,7 @@
             this.livMedia.SmallImageList = this.imlContentPics;
             this.livMedia.TabIndex = 154;
             this.livMedia.UseCompatibleStateImageBehavior = false;
+            this.livMedia.SelectedIndexChanged += new System.EventHandler(this.livMedia_SelectedIndexChanged);
             // 
             // tbxNewGenre
             // 
