@@ -335,7 +335,7 @@
             // pnlFilterAll
             // 
             this.pnlFilterAll.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(61)))), ((int)(((byte)(106)))));
-            this.pnlFilterAll.Location = new System.Drawing.Point(0, 43);
+            this.pnlFilterAll.Location = new System.Drawing.Point(1, 43);
             this.pnlFilterAll.Name = "pnlFilterAll";
             this.pnlFilterAll.Size = new System.Drawing.Size(152, 2);
             this.pnlFilterAll.TabIndex = 111;
@@ -343,7 +343,7 @@
             // pnlFilterMovie
             // 
             this.pnlFilterMovie.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(61)))), ((int)(((byte)(106)))));
-            this.pnlFilterMovie.Location = new System.Drawing.Point(158, 43);
+            this.pnlFilterMovie.Location = new System.Drawing.Point(159, 43);
             this.pnlFilterMovie.Name = "pnlFilterMovie";
             this.pnlFilterMovie.Size = new System.Drawing.Size(152, 2);
             this.pnlFilterMovie.TabIndex = 110;
@@ -351,7 +351,7 @@
             // pnlFilterSeries
             // 
             this.pnlFilterSeries.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(61)))), ((int)(((byte)(106)))));
-            this.pnlFilterSeries.Location = new System.Drawing.Point(314, 43);
+            this.pnlFilterSeries.Location = new System.Drawing.Point(317, 43);
             this.pnlFilterSeries.Name = "pnlFilterSeries";
             this.pnlFilterSeries.Size = new System.Drawing.Size(152, 2);
             this.pnlFilterSeries.TabIndex = 109;
@@ -515,7 +515,7 @@
             // panel5
             // 
             this.panel5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(61)))), ((int)(((byte)(106)))));
-            this.panel5.Location = new System.Drawing.Point(858, 42);
+            this.panel5.Location = new System.Drawing.Point(865, 42);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(250, 2);
             this.panel5.TabIndex = 136;
@@ -650,16 +650,15 @@
             this.img2,
             this.img3,
             this.img4});
-            this.livMedia.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.livMedia.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.livMedia.ForeColor = System.Drawing.Color.White;
             this.livMedia.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.None;
             this.livMedia.HideSelection = false;
             this.livMedia.LargeImageList = this.imlContentPics;
-            this.livMedia.Location = new System.Drawing.Point(0, 116);
+            this.livMedia.Location = new System.Drawing.Point(11, 116);
             this.livMedia.MultiSelect = false;
             this.livMedia.Name = "livMedia";
-            this.livMedia.Size = new System.Drawing.Size(1111, 521);
+            this.livMedia.Size = new System.Drawing.Size(1099, 521);
             this.livMedia.SmallImageList = this.imlContentPics;
             this.livMedia.TabIndex = 154;
             this.livMedia.UseCompatibleStateImageBehavior = false;
@@ -719,7 +718,7 @@
             this.btnShowHide.Image = global::Film_BD_V4.Properties.Resources.Pfeil_klein;
             this.btnShowHide.Location = new System.Drawing.Point(2, 89);
             this.btnShowHide.Name = "btnShowHide";
-            this.btnShowHide.Size = new System.Drawing.Size(29, 19);
+            this.btnShowHide.Size = new System.Drawing.Size(29, 29);
             this.btnShowHide.TabIndex = 149;
             this.btnShowHide.UseVisualStyleBackColor = false;
             this.btnShowHide.Click += new System.EventHandler(this.btnShowHide_Click);
@@ -796,7 +795,7 @@
             this.pbxBackLV2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(48)))), ((int)(((byte)(54)))));
             this.pbxBackLV2.Location = new System.Drawing.Point(0, 47);
             this.pbxBackLV2.Name = "pbxBackLV2";
-            this.pbxBackLV2.Size = new System.Drawing.Size(1109, 40);
+            this.pbxBackLV2.Size = new System.Drawing.Size(1115, 40);
             this.pbxBackLV2.TabIndex = 118;
             this.pbxBackLV2.TabStop = false;
             // 
@@ -805,7 +804,7 @@
             this.pbxBackLV1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(39)))), ((int)(((byte)(44)))));
             this.pbxBackLV1.Location = new System.Drawing.Point(0, 1);
             this.pbxBackLV1.Name = "pbxBackLV1";
-            this.pbxBackLV1.Size = new System.Drawing.Size(1110, 47);
+            this.pbxBackLV1.Size = new System.Drawing.Size(1115, 47);
             this.pbxBackLV1.TabIndex = 84;
             this.pbxBackLV1.TabStop = false;
             // 
