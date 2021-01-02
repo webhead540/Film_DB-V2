@@ -253,5 +253,17 @@ namespace commonLibraries
         {
             return content.Max(x => x.id);
         }
+        public List<Media> getMovies()
+        {
+            return content.FindAll(x => x.type == "Film");
+        }
+        public List<Media> getSeries()
+        {
+            return content.FindAll(x => x.type == "Serie");
+        }
+        public List<Media> getAnimes()
+        {
+            return content.FindAll(x => x.type == "Anime");
+        }
     }
 }

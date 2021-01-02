@@ -38,6 +38,7 @@ namespace Film_BD_V4
         bool infomode = false;
         bool nudPartsOK = false;
         bool isSuggest = false;
+        bool performaceBoost = false;
        
         #endregion
 
@@ -78,6 +79,7 @@ namespace Film_BD_V4
         #region Allgemein
         private void Form1_Load(object sender, EventArgs e)
         {
+            performaceBoost = Properties.Settings.Default.Booster;
             fileName = Application.StartupPath + "\\filme.csv";
 
             picturePath = Application.StartupPath + @"\images\";
@@ -92,6 +94,9 @@ namespace Film_BD_V4
             {
                 mt = new mediaTools(fileName, picturePath, "");
                 currentList = mt.getAllEntrys();
+                movies = mt.getMovies();
+                series = mt.getSeries();
+                anime = mt.getAnimes();
                 List<string> genreList = mt.getGenreList();
                 foreach(string genre in genreList)
                 {
@@ -229,21 +234,25 @@ namespace Film_BD_V4
             changeHighlighting(btnShowAll, false);
             livMedia.Visible = true;
             currentType = "movie";
-            movies.Clear();
-            List<Media> loopList = new List<Media>();
-            string[] types = new string[3] { "Film","",""};
-            mt.filterList(types, true);
-            movies.AddRange(mt.getFilteredList());
-            mt.filterList(types, false);
-            movies.AddRange(mt.getFilteredList());
-            loopList.AddRange(movies);
-            foreach (Media m in loopList)
+            if(!performaceBoost)
             {
-                if (m.type != types[0])
+                movies.Clear();
+                List<Media> loopList = new List<Media>();
+                string[] types = new string[3] { "Film","",""};
+                mt.filterList(types, true);
+                movies.AddRange(mt.getFilteredList());
+                mt.filterList(types, false);
+                movies.AddRange(mt.getFilteredList());
+                loopList.AddRange(movies);
+                foreach (Media m in loopList)
                 {
-                    movies.Remove(m);
+                    if (m.type != types[0])
+                    {
+                        movies.Remove(m);
+                    }
                 }
             }
+
             fillGui(movies);
         }
         private List<Media> createSubList(int type)
@@ -342,20 +351,24 @@ namespace Film_BD_V4
             changeHighlighting(btnShowAll, false);
             livMedia.Visible = true;
             currentType = "series";
-            series.Clear();
-            List<Media> loopList= new List<Media>();
-            string[] types = new string[3] { "Serie", "", "" };
-            mt.filterList(types, true);
-            series.AddRange(mt.getFilteredList());
-            mt.filterList(types, false);
-            series.AddRange(mt.getFilteredList());
-            loopList.AddRange(series);
-            foreach(Media m in loopList)
+            if(!performaceBoost)
             {
-                if(m.type!=types[0])
+                series.Clear();
+                List<Media> loopList = new List<Media>();
+                string[] types = new string[3] { "Serie", "", "" };
+                mt.filterList(types, true);
+                series.AddRange(mt.getFilteredList());
+                mt.filterList(types, false);
+                series.AddRange(mt.getFilteredList());
+                loopList.AddRange(series);
+                foreach (Media m in loopList)
                 {
-                    series.Remove(m);
+                    if (m.type != types[0])
+                    {
+                        series.Remove(m);
+                    }
                 }
+                
             }
             fillGui(series);
         }
@@ -365,26 +378,27 @@ namespace Film_BD_V4
             changeHighlighting(btnShowAll, false);
             livMedia.Visible = true;
             currentType = "anime";
-            anime.Clear();
-            List<Media> loopList = new List<Media>();
-            string[] types = new string[3] { "Anime", "", "" };
-            mt.filterList(types, true);
-            anime.AddRange(mt.getFilteredList());
-            mt.filterList(types, false);
-            anime.AddRange(mt.getFilteredList());
-            loopList.AddRange(anime);
-            foreach (Media m in loopList)
+            if(!performaceBoost)
             {
-                if (m.type != types[0])
+                anime.Clear();
+                List<Media> loopList = new List<Media>();
+                string[] types = new string[3] { "Anime", "", "" };
+                mt.filterList(types, true);
+                anime.AddRange(mt.getFilteredList());
+                mt.filterList(types, false);
+                anime.AddRange(mt.getFilteredList());
+                loopList.AddRange(anime);
+                foreach (Media m in loopList)
                 {
-                    anime.Remove(m);
+                    if (m.type != types[0])
+                    {
+                        anime.Remove(m);
+                    }
                 }
             }
+
             fillGui(anime);
         }
-
-
-
         private void btnEdit_Click(object sender, EventArgs e)
         {
             changeEditMode();

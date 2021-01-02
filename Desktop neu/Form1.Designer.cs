@@ -540,7 +540,7 @@
             this.lblDelmode.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(48)))), ((int)(((byte)(54)))));
             this.lblDelmode.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDelmode.ForeColor = System.Drawing.Color.Red;
-            this.lblDelmode.Location = new System.Drawing.Point(704, 58);
+            this.lblDelmode.Location = new System.Drawing.Point(776, 58);
             this.lblDelmode.Name = "lblDelmode";
             this.lblDelmode.Size = new System.Drawing.Size(132, 16);
             this.lblDelmode.TabIndex = 137;
