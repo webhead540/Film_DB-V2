@@ -84,6 +84,10 @@
             this.img3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.img4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.tbxNewGenre = new System.Windows.Forms.TextBox();
+            this.lbxGenre = new System.Windows.Forms.ListBox();
+            this.lbxSort = new System.Windows.Forms.ListBox();
+            this.btnSelect = new System.Windows.Forms.Button();
+            this.btnSettings = new System.Windows.Forms.Button();
             this.pbxSaveNewGenre = new System.Windows.Forms.PictureBox();
             this.btnNewGenre = new System.Windows.Forms.Button();
             this.pbxGenreDropDown = new System.Windows.Forms.PictureBox();
@@ -99,9 +103,6 @@
             this.pbxPreview = new System.Windows.Forms.PictureBox();
             this.btnImageSelect = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
-            this.lbxGenre = new System.Windows.Forms.ListBox();
-            this.lbxSort = new System.Windows.Forms.ListBox();
-            this.btnSelect = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.nudParts)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudRating)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxSaveNewGenre)).BeginInit();
@@ -539,7 +540,7 @@
             this.lblDelmode.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(48)))), ((int)(((byte)(54)))));
             this.lblDelmode.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDelmode.ForeColor = System.Drawing.Color.Red;
-            this.lblDelmode.Location = new System.Drawing.Point(818, 60);
+            this.lblDelmode.Location = new System.Drawing.Point(704, 58);
             this.lblDelmode.Name = "lblDelmode";
             this.lblDelmode.Size = new System.Drawing.Size(132, 16);
             this.lblDelmode.TabIndex = 137;
@@ -671,6 +672,65 @@
             this.tbxNewGenre.Size = new System.Drawing.Size(140, 20);
             this.tbxNewGenre.TabIndex = 155;
             this.tbxNewGenre.Visible = false;
+            // 
+            // lbxGenre
+            // 
+            this.lbxGenre.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(57)))), ((int)(((byte)(63)))));
+            this.lbxGenre.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.lbxGenre.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.lbxGenre.FormattingEnabled = true;
+            this.lbxGenre.Location = new System.Drawing.Point(189, 114);
+            this.lbxGenre.Name = "lbxGenre";
+            this.lbxGenre.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
+            this.lbxGenre.Size = new System.Drawing.Size(92, 104);
+            this.lbxGenre.TabIndex = 158;
+            this.lbxGenre.Visible = false;
+            // 
+            // lbxSort
+            // 
+            this.lbxSort.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(57)))), ((int)(((byte)(63)))));
+            this.lbxSort.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.lbxSort.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.lbxSort.FormattingEnabled = true;
+            this.lbxSort.Items.AddRange(new object[] {
+            "Datum Auf",
+            "Datum Ab",
+            "Bewertung Auf",
+            "Bewertung Ab",
+            "Name A-Z",
+            "Name Z-A"});
+            this.lbxSort.Location = new System.Drawing.Point(42, 115);
+            this.lbxSort.Name = "lbxSort";
+            this.lbxSort.Size = new System.Drawing.Size(82, 65);
+            this.lbxSort.TabIndex = 157;
+            this.lbxSort.Visible = false;
+            this.lbxSort.SelectedIndexChanged += new System.EventHandler(this.lbxSort_SelectedIndexChanged);
+            // 
+            // btnSelect
+            // 
+            this.btnSelect.Location = new System.Drawing.Point(186, 220);
+            this.btnSelect.Name = "btnSelect";
+            this.btnSelect.Size = new System.Drawing.Size(95, 23);
+            this.btnSelect.TabIndex = 159;
+            this.btnSelect.Text = "auswählen";
+            this.btnSelect.UseVisualStyleBackColor = true;
+            this.btnSelect.Visible = false;
+            this.btnSelect.Click += new System.EventHandler(this.btnSelect_Click);
+            // 
+            // btnSettings
+            // 
+            this.btnSettings.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(48)))), ((int)(((byte)(54)))));
+            this.btnSettings.BackgroundImage = global::Film_BD_V4.Properties.Resources.Settings1;
+            this.btnSettings.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnSettings.FlatAppearance.BorderSize = 0;
+            this.btnSettings.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSettings.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(48)))), ((int)(((byte)(54)))));
+            this.btnSettings.Location = new System.Drawing.Point(914, 48);
+            this.btnSettings.Name = "btnSettings";
+            this.btnSettings.Size = new System.Drawing.Size(42, 35);
+            this.btnSettings.TabIndex = 160;
+            this.btnSettings.UseVisualStyleBackColor = false;
+            this.btnSettings.Click += new System.EventHandler(this.btnSettings_Click);
             // 
             // pbxSaveNewGenre
             // 
@@ -854,56 +914,13 @@
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
-            // lbxGenre
-            // 
-            this.lbxGenre.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(57)))), ((int)(((byte)(63)))));
-            this.lbxGenre.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.lbxGenre.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.lbxGenre.FormattingEnabled = true;
-            this.lbxGenre.Location = new System.Drawing.Point(189, 114);
-            this.lbxGenre.Name = "lbxGenre";
-            this.lbxGenre.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
-            this.lbxGenre.Size = new System.Drawing.Size(92, 104);
-            this.lbxGenre.TabIndex = 158;
-            this.lbxGenre.Visible = false;
-            // 
-            // lbxSort
-            // 
-            this.lbxSort.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(57)))), ((int)(((byte)(63)))));
-            this.lbxSort.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.lbxSort.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.lbxSort.FormattingEnabled = true;
-            this.lbxSort.Items.AddRange(new object[] {
-            "Datum Auf",
-            "Datum Ab",
-            "Bewertung Auf",
-            "Bewertung Ab",
-            "Name A-Z",
-            "Name Z-A"});
-            this.lbxSort.Location = new System.Drawing.Point(42, 115);
-            this.lbxSort.Name = "lbxSort";
-            this.lbxSort.Size = new System.Drawing.Size(82, 65);
-            this.lbxSort.TabIndex = 157;
-            this.lbxSort.Visible = false;
-            this.lbxSort.SelectedIndexChanged += new System.EventHandler(this.lbxSort_SelectedIndexChanged);
-            // 
-            // btnSelect
-            // 
-            this.btnSelect.Location = new System.Drawing.Point(186, 220);
-            this.btnSelect.Name = "btnSelect";
-            this.btnSelect.Size = new System.Drawing.Size(95, 23);
-            this.btnSelect.TabIndex = 159;
-            this.btnSelect.Text = "auswählen";
-            this.btnSelect.UseVisualStyleBackColor = true;
-            this.btnSelect.Visible = false;
-            this.btnSelect.Click += new System.EventHandler(this.btnSelect_Click);
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(57)))), ((int)(((byte)(63)))));
             this.ClientSize = new System.Drawing.Size(1111, 637);
+            this.Controls.Add(this.btnSettings);
             this.Controls.Add(this.btnSelect);
             this.Controls.Add(this.lbxGenre);
             this.Controls.Add(this.lbxSort);
@@ -1061,6 +1078,7 @@
         private System.Windows.Forms.ListBox lbxGenre;
         private System.Windows.Forms.ListBox lbxSort;
         private System.Windows.Forms.Button btnSelect;
+        private System.Windows.Forms.Button btnSettings;
     }
 }
 

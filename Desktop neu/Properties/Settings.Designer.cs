@@ -46,5 +46,52 @@ namespace Film_BD_V4.Properties {
                 this["Size"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool Booster {
+            get {
+                return ((bool)(this["Booster"]));
+            }
+            set {
+                this["Booster"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool Logging {
+            get {
+                return ((bool)(this["Logging"]));
+            }
+            set {
+                this["Logging"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        public global::System.DateTime lastSync {
+            get {
+                return ((global::System.DateTime)(this["lastSync"]));
+            }
+            set {
+                this["lastSync"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string oneDrivePath {
+            get {
+                return ((string)(this["oneDrivePath"]));
+            }
+            set {
+                this["oneDrivePath"] = value;
+            }
+        }
     }
 }

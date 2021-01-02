@@ -66,6 +66,7 @@ namespace Film_BD_V4
         #region Objekte
         mediaTools mt;
         Form2 f;
+        frmSettings frm;
         #endregion
 
         #region DateTime
@@ -80,6 +81,7 @@ namespace Film_BD_V4
             fileName = Application.StartupPath + "\\filme.csv";
 
             picturePath = Application.StartupPath + @"\images\";
+            frm = new frmSettings(picturePath, fileName, "filme.csv");
             if (Environment.UserName.ToLower() == "patrick")
             {
                 picturePath = @"Q:\Patrick\Bilder\kamera\Amsterdam August 2012\";
@@ -169,7 +171,12 @@ namespace Film_BD_V4
             {
                 MessageBox.Show("Beim Setzen der Farbe trat folgender Fehler auf: " + ex.Message);
             }
-            
+
+
+        }
+        private void btnSettings_Click(object sender, EventArgs e)
+        {
+            frm.ShowDialog();
         }
         #endregion
         #region vorhandes Anzeigen
@@ -620,7 +627,7 @@ namespace Film_BD_V4
                 mt.filterList(types, true, genreList);
                 currentList.AddRange(mt.getFilteredList());
             }
-            else if(wishlistFilterState==0||wishlistFilterState==-1)
+            if(wishlistFilterState==0||wishlistFilterState==-1)
             {
                 mt.filterList(types, false, genreList);
                 currentList.AddRange(mt.getFilteredList());
@@ -690,7 +697,7 @@ namespace Film_BD_V4
 
             if (cbxAddWishList.Checked)
             {
-                args.AddRange(new string[] { "True", DateTime.MinValue.ToString() });
+                args.AddRange(new string[] { "True"});
             }
             else
             {
@@ -787,6 +794,7 @@ namespace Film_BD_V4
             pbxPreview.Image = null;
             lbxGenreAdd.ClearSelected();
             pictureName = "";
+            tbxGenreAddDropdown.Clear();
             if (editMode)
             {
                 livMedia.Visible = true;
@@ -968,11 +976,7 @@ namespace Film_BD_V4
 
 
         #endregion
-
-        private void lbxGenreAdd_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
+       
     }
 
 }
