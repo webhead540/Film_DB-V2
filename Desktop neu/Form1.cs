@@ -87,7 +87,7 @@ namespace Film_BD_V4
             picturePath = Application.StartupPath + @"\images\";
             
             if (Environment.UserName.ToLower() == "patrick")
-            {
+            { 
                 picturePath = @"Q:\Patrick\Bilder\kamera\Amsterdam August 2012\";
             }
             frm = new frmSettings(picturePath, fileName, "filme.csv");
@@ -163,6 +163,7 @@ namespace Film_BD_V4
                         if (C.Name.Contains(pnlNamePart))
                         {
                             C.BackColor = colDefault;
+                            
                         }
                     }
                 }
@@ -200,26 +201,63 @@ namespace Film_BD_V4
             }
             currentList = guiList;
 
-            foreach (Media m in guiList)
+            if (!performaceBoost)
             {
-                if (m.pictureName != null)
+                foreach (Media m in guiList)
                 {
-                    try
+                    if (m.pictureName != null)
                     {
-                        imlContentPics.Images.Add(Image.FromFile(picturePath + m.pictureName));
-                        ListViewItem lvi = new ListViewItem();
-                        lvi.Text = m.name;
-                        lvi.ImageIndex = index;
-                        lvi.SubItems.Add(m.name);
-                        livMedia.Items.Add(lvi);
-                        index++;
-                    }
-                    catch
-                    {
-                        MessageBox.Show("Das Bild zu Eintrag " + m.name + " konnte nicht gefunden werden! Der Eintrag wurde übersprungen");
+                        try
+                        {
+                            imlContentPics.Images.Add(Image.FromFile(picturePath + m.pictureName));
+                            ListViewItem lvi = new ListViewItem();
+                            lvi.Text = m.name;
+                            lvi.ImageIndex = index;
+                            lvi.SubItems.Add(m.name);
+                            livMedia.Items.Add(lvi);
+                            index++;
+                        }
+                        catch
+                        {
+                            MessageBox.Show("Das Bild zu Eintrag " + m.name + " (ID: " + m.id + ") konnte nicht gefunden werden! Der Eintrag wurde übersprungen");
+                        }
                     }
                 }
             }
+            else
+            {
+                List<ListViewItem> items = new List<ListViewItem>();
+                foreach (Media m in guiList)
+                {
+                    if (m.pictureName != null)
+                    {
+                        try
+                        {
+                            imlContentPics.Images.Add(Image.FromFile(picturePath + m.pictureName));
+                            ListViewItem lvi = new ListViewItem();
+                            lvi.Text = m.name;
+                            lvi.ImageIndex = index;
+                            lvi.SubItems.Add(m.name);
+                            items.Add(lvi);
+                            index++;
+                        }
+                        catch(Exception ex)
+                        {
+                            MessageBox.Show("Das Bild zu Eintrag " + m.name + " (ID: " + m.id + ") konnte nicht gefunden werden! Der Eintrag wurde übersprungen");
+                        }
+                    }
+                }
+                livMedia.BeginUpdate();
+                livMedia.Items.AddRange(items.ToArray());
+                livMedia.EndUpdate();
+                items.Clear();
+                items = null;
+                guiList.Clear();
+                guiList = null;
+                GC.Collect();
+                GC.WaitForPendingFinalizers();
+            }
+           
         }
 
         private void btnFilterAll_Click(object sender, EventArgs e)
