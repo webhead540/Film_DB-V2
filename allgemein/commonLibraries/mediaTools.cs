@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Linq;
 using System.Collections.Generic;
-using System.Security.Cryptography.X509Certificates;
+
 
 namespace commonLibraries
 {
@@ -17,7 +17,8 @@ namespace commonLibraries
         bool alreadyFiltered = false;
         int currentpos = 0;
         int freeid;
-        bool containsdummys;
+        
+        private static readonly log4net.ILog logging = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         public mediaTools(string filePath,string imagePath,string backup)
         {
             try
@@ -31,6 +32,7 @@ namespace commonLibraries
             }
             catch (Exception ex)
             {
+                logging.Error("Fehler im Konstruktor der Klasse 'mediaTools'", ex);
                 throw ex;
             }
       
@@ -189,6 +191,7 @@ namespace commonLibraries
             }
             catch(Exception ex)
             {
+                logging.Error("Fehler in der Prozedur 'mediaTools.createNewEntry");
                 throw ex;
             }
         }

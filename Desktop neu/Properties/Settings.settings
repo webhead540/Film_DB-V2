@@ -12,13 +12,16 @@
       <Value Profile="(Default)">False</Value>
     </Setting>
     <Setting Name="Logging" Type="System.Boolean" Scope="User">
-      <Value Profile="(Default)">False</Value>
+      <Value Profile="(Default)">True</Value>
     </Setting>
     <Setting Name="lastSync" Type="System.DateTime" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
     <Setting Name="oneDrivePath" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="Loglevel" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Warn</Value>
     </Setting>
   </Settings>
 </SettingsFile>

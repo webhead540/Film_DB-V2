@@ -8,7 +8,7 @@ namespace commonLibraries
 {
     internal class FileHandling
     {
-        
+        private static readonly log4net.ILog logging = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         List<string> entrys = new List<string>();
         List<string> genres = new List<string>();
         int lastID;
@@ -65,6 +65,7 @@ namespace commonLibraries
             }
             catch(Exception ex)
             {
+                logging.Error("Fehler in der Prozedur 'FileHandling.removeEntry",ex);
                 throw ex;
             }
 
@@ -83,6 +84,7 @@ namespace commonLibraries
             }
             catch (Exception ex)
             {
+                logging.Fatal("Fehler in der Prozedur 'FileHandling.saveFile", ex);
                 throw ex;
             }
 
@@ -111,6 +113,7 @@ namespace commonLibraries
             catch (Exception ex)
             {
                 ex.Data.Add("ParseFile",entrys[curIndex]);
+                logging.Fatal("Fehler in der Prozedur 'FileHandling.parseFile'. Der Fehler trat bei folgendem Eintrag auf: " + entrys[curIndex], ex);
                 throw ex;
             }
 
@@ -184,6 +187,7 @@ namespace commonLibraries
             }
             catch (Exception ex)
             {
+                logging.Error("Fehler in der Prozedur 'FileHandling.parseString", ex);
                 throw ex;
             }
             
@@ -211,6 +215,7 @@ namespace commonLibraries
             }
             catch (Exception ex)
             {
+                logging.Error("Fehler in der Prozedur 'FileHandling.copyImage",ex);
                 throw ex;
             }
 

@@ -8,7 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
-
+using commonLibraries;
+using log4net;
 namespace Film_BD_V4
 {
     public partial class frmSettings : Form
@@ -18,7 +19,9 @@ namespace Film_BD_V4
         string csvName;
         string imagePath;
         bool unsaved=false;
+        Logging l = new Logging();
         DateTime lastSync = DateTime.MinValue;
+        private static readonly log4net.ILog logging = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         public frmSettings(string picturePath, string csvPath, string fileName)
         {
             InitializeComponent();
@@ -54,6 +57,7 @@ namespace Film_BD_V4
                 catch (Exception ex)
                 {
                     MessageBox.Show("Du machst was falsch! Folgender Fehler ist aufgetreten:" + Environment.NewLine + ex.Message);
+                    logging.Error("Fehler beim Kopieren der Dateien in Onedrive", ex);
                 }
                 finally
                 {
@@ -63,6 +67,7 @@ namespace Film_BD_V4
             else
             {
                 MessageBox.Show("Der Onedrive Pfad wurde nicht ausgewählt!");
+                logging.Warn("Der Onedrive Pfad wurde nicht ausgewählt");
             }
             
         }
@@ -81,26 +86,37 @@ namespace Film_BD_V4
 
         private void frmSettings_Load(object sender, EventArgs e)
         {
-            cbxLogging.Checked = Properties.Settings.Default.Logging;
-            cbxPerformance.Checked = Properties.Settings.Default.Booster;
-            if(Properties.Settings.Default.lastSync!=null&& Properties.Settings.Default.lastSync !=DateTime.MinValue)
+            try
             {
-                lblLastSync.Text = "Letzer Sync: " + Properties.Settings.Default.lastSync.ToString();
+                cbxLogging.Checked = Properties.Settings.Default.Logging;
+                cbxPerformance.Checked = Properties.Settings.Default.Booster;
+                if (Properties.Settings.Default.lastSync != null && Properties.Settings.Default.lastSync != DateTime.MinValue)
+                {
+                    lblLastSync.Text = "Letzer Sync: " + Properties.Settings.Default.lastSync.ToString();
+                }
+                else
+                {
+                    lblLastSync.Text = "Letzer Sync: Nie";
+                }
+                if (Properties.Settings.Default.oneDrivePath != "")
+                {
+                    oneDrivePath = Properties.Settings.Default.oneDrivePath;
+                }
+                else
+                {
+                    oneDrivePath = Environment.GetEnvironmentVariable("OneDriveConsumer");
+                    fbdSelectOnedrive.SelectedPath = oneDrivePath;
+                }
+                cbxLogLevel.Enabled = cbxLogging.Checked;
+                cbxLogLevel.SelectedValue = l.getLoglevel();
+                unsaved = false;
             }
-            else
+            catch (Exception ex)
             {
-                lblLastSync.Text = "Letzer Sync: Nie";
+                MessageBox.Show("Du machst was falsch! Es ist folgender Fehler aufgetreten:" + Environment.NewLine + ex.Message);
+                logging.Error(ex.Message + Environment.NewLine + ex.StackTrace,ex);
             }
-            if(Properties.Settings.Default.oneDrivePath!="")
-            {
-                oneDrivePath = Properties.Settings.Default.oneDrivePath;
-            }
-            else
-            {
-                oneDrivePath = Environment.GetEnvironmentVariable("OneDriveConsumer");
-                fbdSelectOnedrive.SelectedPath = oneDrivePath;
-            }
-            unsaved = false;
+            
         }
 
         private void btnOk_Click(object sender, EventArgs e)
@@ -108,6 +124,9 @@ namespace Film_BD_V4
             Properties.Settings.Default.Logging = cbxLogging.Checked;
             Properties.Settings.Default.Booster = cbxPerformance.Checked;
             Properties.Settings.Default.oneDrivePath = oneDrivePath;
+            Properties.Settings.Default.Loglevel = cbxLogLevel.SelectedItem.ToString();
+            
+            l.changeLogLevel(cbxLogLevel.SelectedItem.ToString());
             Properties.Settings.Default.Save();
             unsaved = false;
             this.Hide();
@@ -120,6 +139,7 @@ namespace Film_BD_V4
 
         private void cbxLogging_CheckedChanged(object sender, EventArgs e)
         {
+            cbxLogLevel.Enabled = cbxLogging.Checked;
             unsaved = true;
         }
 
@@ -138,6 +158,19 @@ namespace Film_BD_V4
         private void pbxSelectOneDrive_MouseHover(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnDefaults_Click(object sender, EventArgs e)
+        {
+            cbxLogging.Checked = true;
+            Properties.Settings.Default.Logging = true;
+            Properties.Settings.Default.Loglevel = "Warn";
+            cbxLogLevel.SelectedItem = "Warn";
+            cbxPerformance.Checked = false;
+            Properties.Settings.Default.Booster = false;
+            Properties.Settings.Default.oneDrivePath = "";
+            Properties.Settings.Default.Save();
+            unsaved = false;
         }
     }
 }

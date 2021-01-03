@@ -61,7 +61,7 @@ namespace Film_BD_V4.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
         public bool Logging {
             get {
                 return ((bool)(this["Logging"]));
@@ -91,6 +91,18 @@ namespace Film_BD_V4.Properties {
             }
             set {
                 this["oneDrivePath"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Warn")]
+        public string Loglevel {
+            get {
+                return ((string)(this["Loglevel"]));
+            }
+            set {
+                this["Loglevel"] = value;
             }
         }
     }

@@ -12,11 +12,14 @@ using System.Diagnostics;
 using System.Net;
 using commonLibraries;
 using System.Collections;
+using System.Configuration;
+
 
 namespace Film_BD_V4
 {
     public partial class Form1 : Form
     {
+        private static readonly log4net.ILog logging = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         public Form1()
         {
             InitializeComponent();
@@ -79,9 +82,26 @@ namespace Film_BD_V4
 
 
         #region Allgemein
-        private void Form1_Load(object sender, EventArgs e)
+        private void loadConfig()
         {
             performaceBoost = Properties.Settings.Default.Booster;
+            Logging l = new Logging();
+            if (Properties.Settings.Default.Logging==false)
+            {
+                l.changeLogLevel("Off");
+            }
+            else
+            {
+                l.changeLogLevel(Properties.Settings.Default.Loglevel);
+            }
+            logging.Info("Config geladen");
+        }
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            if ((ModifierKeys & Keys.Shift) != 0)
+            {
+                File.Delete(ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.PerUserRoamingAndLocal).FilePath);
+            }
             fileName = Application.StartupPath + "\\filme.csv";
 
             picturePath = Application.StartupPath + @"\images\";
@@ -90,32 +110,40 @@ namespace Film_BD_V4
             { 
                 picturePath = @"Q:\Patrick\Bilder\kamera\Amsterdam August 2012\";
             }
+            logging.Debug("Picturepath =" + picturePath);
             frm = new frmSettings(picturePath, fileName, "filme.csv");
             changeHighlighting(btnFilterAll, true);
             changeHighlighting(btnShowAll, false);
             try
             {
                 mt = new mediaTools(fileName, picturePath, "");
+                logging.Debug("mediatools Objekt erstellt");
                 currentList = mt.getAllEntrys();
                 movies = mt.getMovies();
                 series = mt.getSeries();
                 anime = mt.getAnimes();
+                logging.Debug("Listen für Film,Serie, Anime erstellt");
                 List<string> genreList = mt.getGenreList();
+                logging.Debug("genreList erstellt, Einträge:"+ genreList.Count);
                 foreach(string genre in genreList)
                 {
+                    
                     lbxGenre.Items.Add(genre);
                     lbxGenreAdd.Items.Add(genre);
                 }
+                logging.Info("Alle Listen erfolgreich erstellt");
                 fillGui(currentList);
             }
             
             catch(FileNotFoundException)
             {
                 MessageBox.Show("Die CSV Datei wurde nicht gefunden");
+                logging.Error("Die CSV Datei wurde nicht gefunden");
             }
             catch(InvalidCastException ex)
             {
                 MessageBox.Show("Die Datei enthält ungültige Werte. Der Fehler trat an folgender Stelle auf: " + ex.Data[0].ToString());
+                logging.Error("Die Datei enthält ungültige Werte. Der Fehler trat an folgender Stelle auf: " + ex.Data[0].ToString());
             }
             catch(FormatException ex)
             {
@@ -125,10 +153,12 @@ namespace Film_BD_V4
                     exData = de.Value.ToString();
                 }
                     MessageBox.Show("Die Datei enthält ungültige Werte. Der Fehler trat an folgender Stelle auf: " + exData);
+                    logging.Error("Die Datei enthält ungültige Werte. Der Fehler trat an folgender Stelle auf: " + exData);
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Beim Laden des Programms trat folgender Fehler auf: " + ex.Message + Environment.NewLine + ex.StackTrace);
+                logging.Error("Beim Programmstart trat ein Fehler auf", ex);
             }
         }
         private void Form1_FormClosed(object sender, FormClosedEventArgs e)
@@ -139,6 +169,7 @@ namespace Film_BD_V4
         }
         private void changeHighlighting(Control trigger, bool filter)
         {
+            logging.Debug("Highlighting wird geändert");
             try
             {
                 string pnlNamePart = "";
@@ -171,26 +202,33 @@ namespace Film_BD_V4
                 Control fittingPanel = this.Controls.Find(triggerPanelName, true)[0];
 
                 fittingPanel.BackColor = colToSet;
+                logging.Debug("Highlithing geändert");
             }
             catch(IndexOutOfRangeException)
             {
                 MessageBox.Show("Die Farbe konnte nicht angepasst werden, es konnte kein Steuerelement gefunden werden");
+                logging.Error("Die Farbe konnte nicht angepasst werden, es konnte kein Steuerelement gefunden werden");
             }
             catch(Exception ex)
             {
                 MessageBox.Show("Beim Setzen der Farbe trat folgender Fehler auf: " + ex.Message);
+                logging.Error("Beim Setzen der Farbe trat ein Fehler auf", ex);
             }
 
 
         }
         private void btnSettings_Click(object sender, EventArgs e)
         {
+            logging.Debug("Einstellungen werden aufgerufen");
             frm.ShowDialog();
         }
         #endregion
         #region vorhandes Anzeigen
         private void fillGui(List<Media> guiList,bool presorted=false)
         {
+            logging.Debug("Starte Aktualisierung der GUI");
+            Stopwatch sw = new Stopwatch();
+            sw.Start();
             int index = 0;
             livMedia.Clear();
             imlContentPics.Images.Clear();
@@ -217,12 +255,24 @@ namespace Film_BD_V4
                             livMedia.Items.Add(lvi);
                             index++;
                         }
-                        catch
+                        catch(Exception ex)
                         {
-                            MessageBox.Show("Das Bild zu Eintrag " + m.name + " (ID: " + m.id + ") konnte nicht gefunden werden! Der Eintrag wurde übersprungen");
+                            if (!File.Exists(picturePath + m.pictureName))
+                            {
+                                MessageBox.Show("Das Bild zu Eintrag " + m.name + " (ID: " + m.id + ") konnte nicht gefunden werden! Der Eintrag wurde übersprungen");
+                                logging.Warn("Das Bild zu Eintrag " + m.name + " (ID: " + m.id + ") konnte nicht gefunden werden! Der Eintrag wurde übersprungen");
+                            }
+                            else
+                            {
+                                MessageBox.Show("Du machst was falsch! Beim aktualiseren der GUI trat folgender Fehler auf:" + Environment.NewLine + ex.Message);
+                                logging.Error("Fehler in der Prozedur 'fillGui'", ex);
+                            }
+                            
                         }
                     }
                 }
+                sw.Stop();
+                logging.Debug("verstrichene Zeit: " + sw.Elapsed);
             }
             else
             {
@@ -243,7 +293,16 @@ namespace Film_BD_V4
                         }
                         catch(Exception ex)
                         {
-                            MessageBox.Show("Das Bild zu Eintrag " + m.name + " (ID: " + m.id + ") konnte nicht gefunden werden! Der Eintrag wurde übersprungen");
+                            if (!File.Exists(picturePath + m.pictureName))
+                            {
+                                MessageBox.Show("Das Bild zu Eintrag " + m.name + " (ID: " + m.id + ") konnte nicht gefunden werden! Der Eintrag wurde übersprungen");
+                                logging.Warn("Das Bild zu Eintrag " + m.name + " (ID: " + m.id + ") konnte nicht gefunden werden! Der Eintrag wurde übersprungen");
+                            }
+                            else
+                            {
+                                MessageBox.Show("Du machst was falsch! Beim aktualiseren der GUI trat folgender Fehler auf:" + Environment.NewLine + ex.Message);
+                                logging.Error("Fehler in der Prozedur 'fillGui'", ex);
+                            }
                         }
                     }
                 }
@@ -256,12 +315,15 @@ namespace Film_BD_V4
                 guiList = null;
                 GC.Collect();
                 GC.WaitForPendingFinalizers();
+                sw.Stop();
+                logging.Debug("verstrichene Zeit: " + sw.Elapsed);
             }
            
         }
 
         private void btnFilterAll_Click(object sender, EventArgs e)
         {
+            logging.Debug("btnFilterAll wurde gedrückt");
             changeHighlighting((Control) sender, true);
             changeHighlighting(btnShowAll, false);
             livMedia.Visible = true;
@@ -271,6 +333,7 @@ namespace Film_BD_V4
         }
         private void btnFilterMovie_Click(object sender, EventArgs e)
         {
+            logging.Debug("btnFilterMovie wurde gedrückt");
             changeHighlighting((Control)sender, true);
             changeHighlighting(btnShowAll, false);
             livMedia.Visible = true;
@@ -335,6 +398,7 @@ namespace Film_BD_V4
 
         private void btnShowAll_Click(object sender, EventArgs e)
         {
+            logging.Debug("btnShowAll wurde gedrückt");
             changeHighlighting((Control)sender, false);
             livMedia.Visible = true;
             if (currentType == "movie")
@@ -360,6 +424,7 @@ namespace Film_BD_V4
 
         private void btnShowStarted_Click(object sender, EventArgs e)
         {
+            logging.Debug("btnShowStarted wurde gedrückt");
             changeHighlighting((Control)sender, false);
             livMedia.Visible = true;
             livMedia.Clear();
@@ -369,6 +434,7 @@ namespace Film_BD_V4
         }
         private void btnShowFinished_Click(object sender, EventArgs e)
         {
+            logging.Debug("btnShowFinished wurde gedrückt");
             changeHighlighting((Control)sender, false);
             livMedia.Visible = true;
             livMedia.Clear();
@@ -378,6 +444,7 @@ namespace Film_BD_V4
         }
         private void btnShowFavorites_Click(object sender, EventArgs e)
         {
+            logging.Debug("btnShowFavorites wurde gedrückt");
             changeHighlighting((Control)sender, false);
             livMedia.Visible = true;
             livMedia.Visible = true;
@@ -388,6 +455,7 @@ namespace Film_BD_V4
 
         private void bbtnFilterSeries_Click(object sender, EventArgs e)
         {
+            logging.Debug("btnFilterSeries wurde gedrückt");
             changeHighlighting((Control)sender, true);
             changeHighlighting(btnShowAll, false);
             livMedia.Visible = true;
@@ -415,6 +483,7 @@ namespace Film_BD_V4
         }
         private void btnFilterAnime_Click(object sender, EventArgs e)
         {
+            logging.Debug("btnFilterAnime wurde gedrückt");
             changeHighlighting((Control)sender, true);
             changeHighlighting(btnShowAll, false);
             livMedia.Visible = true;
@@ -442,6 +511,7 @@ namespace Film_BD_V4
         }
         private void btnEdit_Click(object sender, EventArgs e)
         {
+            logging.Debug("Editiermodus wurde geändert");
             changeEditMode();
         }
 
@@ -461,6 +531,7 @@ namespace Film_BD_V4
         }
         private void deleteItem(Media delete, bool editmode)
         {
+            logging.Info("Der Eintrag " + delete.id + " " + delete.name + " wird gelöscht");
             mt.removeEntry(delete, editMode);
             if (!isSuggest)
             {
@@ -562,6 +633,7 @@ namespace Film_BD_V4
         {
             if (!delMode)
             {
+                logging.Info("Löschmodus wurde aktiviert");
                 DialogResult res = MessageBox.Show("Soll der Löschmodus aktiviert werden?", "Löschmodus aktivieren?", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if (res == DialogResult.Yes)
                 {
@@ -575,6 +647,7 @@ namespace Film_BD_V4
                 delMode = false;
                 lblDelmode.Visible = false;
                 MessageBox.Show("Löschmodus deaktivert");
+                logging.Info("Löschmodus wurde deaktiviert");
             }
         }
 
@@ -618,31 +691,38 @@ namespace Film_BD_V4
         }
         private void lbxSort_SelectedIndexChanged(object sender, EventArgs e)
         {
+            logging.Debug("Sortierfunktion wurde aufgerufen");
             List<Media> sortedList=null;
 
             if (lbxSort.SelectedIndex == 0)
             {
                 sortedList = currentList.OrderBy(x => x.dateAdded).ThenBy(x=>x.name).ToList();
+                logging.Debug("sortiere nach Datum aufsteigend");
             }
             else if (lbxSort.SelectedIndex == 1)
             {
                 sortedList = currentList.OrderByDescending(x => x.dateAdded).ThenBy(x => x.name).ToList();
+                logging.Debug("sortiere nach Datum absteigend");
             }
             if (lbxSort.SelectedIndex == 2)
             {
                 sortedList = currentList.OrderBy(x => x.rating).ThenBy(x => x.name).ToList();
+                logging.Debug("sortiere nach Bewertung aufsteigend");
             }
             else if (lbxSort.SelectedIndex == 3)
             {
                 sortedList = currentList.OrderByDescending(x => x.rating).ThenBy(x => x.name).ToList();
+                logging.Debug("sortiere nach Bewertung absteigend");
             }
             else if(lbxSort.SelectedIndex == 4)
             {
                 sortedList = currentList.OrderBy(x => x.name).ToList();
+                logging.Debug("sortiere nach Name aufsteigend");
             }
             else if (lbxSort.SelectedIndex == 5)
             {
                 sortedList = currentList.OrderByDescending(x => x.name).ToList();
+                logging.Debug("sortiere nach Name absteigend");
             }
 
             fillGui(sortedList,true);
@@ -651,6 +731,7 @@ namespace Film_BD_V4
         }
         private void btnSelect_Click(object sender, EventArgs e)
         {
+            logging.Debug("GenreFilter wurde benutzt");
             lbxGenre.Visible = false;
             btnSelect.Visible = false;
             string[] types;
@@ -677,6 +758,7 @@ namespace Film_BD_V4
             {
                 genreList.Add(s);
             }
+            logging.Debug("Suche nach Einträgen, die ein oder mehrere der folgenden Genres enthalten:" + string.Join(",", genreList));
             if(wishlistFilterState==1||wishlistFilterState==-1)
             {
                 mt.filterList(types, true, genreList);
@@ -721,6 +803,8 @@ namespace Film_BD_V4
         #region neuer Eintrag
         private void btnSave_Click(object sender, EventArgs e)
         {
+            logging.Info("Speichere neuen Eintrag");
+
             List<string> selectedGenres = new List<string>();
             List<string> args = new List<string>();
 
@@ -791,6 +875,7 @@ namespace Film_BD_V4
             try
             {
                 currentid = mt.getlastID()+1;
+                logging.Debug("Datem des neuen Eintrags: " + currentid + ";" + string.Join(";", args));
                 if (mt.createNewEntry(args.ToArray(), pictureSourcePath, currentid))
                 {
                     tmrHide.Start();
@@ -806,6 +891,7 @@ namespace Film_BD_V4
             catch (Exception ex)
             {
                 MessageBox.Show("Du machst was falsch! Folgender Fehler ist aufgetreten: " + ex.Message);
+                logging.Fatal("Fehler beim Speichern der Datei!", ex);
             }
         }
         private void btnImageSelect_Click(object sender, EventArgs e)
@@ -818,16 +904,19 @@ namespace Film_BD_V4
                     pbxPreview.ImageLocation = ofdImageSelect.FileName;
                     pictureName = Path.GetFileName(ofdImageSelect.FileName);
                     pictureSourcePath = ofdImageSelect.FileName;
+                    logging.Info("Bild ausgewählt");
                 }
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Du machst was falsch! Folgender Fehler ist aufgetreten: " + ex.Message);
+                logging.Error("Fehler in der Prozedur 'btnImageSelect_Click", ex);
             }
         }
 
         private void tmrHide_Tick(object sender, EventArgs e)
         {
+            logging.Debug("Setze GUI auf Standard zurück");
             tmrHide.Stop();
             pbxOK.Visible = false;
             tbxLink.Clear();
@@ -1027,6 +1116,7 @@ namespace Film_BD_V4
             lbxGenre.Items.Add(newGenre);
             tbxNewGenre.Visible = false;
             pbxSaveNewGenre.Visible = false;
+            logging.Debug("neues Genre hinzugefügt: " + newGenre);
         }
 
 
