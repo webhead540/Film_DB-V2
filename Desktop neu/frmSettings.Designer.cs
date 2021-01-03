@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmSettings));
             this.cbxPerformance = new System.Windows.Forms.CheckBox();
             this.cbxLogging = new System.Windows.Forms.CheckBox();
@@ -36,6 +37,7 @@
             this.lblLastSync = new System.Windows.Forms.Label();
             this.pbxSelectOneDrive = new System.Windows.Forms.PictureBox();
             this.fbdSelectOnedrive = new System.Windows.Forms.FolderBrowserDialog();
+            this.ttpInfo = new System.Windows.Forms.ToolTip(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.pbxSelectOneDrive)).BeginInit();
             this.SuspendLayout();
             // 
@@ -103,12 +105,14 @@
             // 
             this.pbxSelectOneDrive.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.pbxSelectOneDrive.Image = ((System.Drawing.Image)(resources.GetObject("pbxSelectOneDrive.Image")));
-            this.pbxSelectOneDrive.Location = new System.Drawing.Point(13, 67);
+            this.pbxSelectOneDrive.Location = new System.Drawing.Point(12, 67);
             this.pbxSelectOneDrive.Name = "pbxSelectOneDrive";
             this.pbxSelectOneDrive.Size = new System.Drawing.Size(32, 32);
             this.pbxSelectOneDrive.TabIndex = 5;
             this.pbxSelectOneDrive.TabStop = false;
+            this.ttpInfo.SetToolTip(this.pbxSelectOneDrive, "Onedriveordner wählen");
             this.pbxSelectOneDrive.Click += new System.EventHandler(this.pbxSelectOneDrive_Click);
+            this.pbxSelectOneDrive.MouseHover += new System.EventHandler(this.pbxSelectOneDrive_MouseHover);
             // 
             // frmSettings
             // 
@@ -146,5 +150,6 @@
         private System.Windows.Forms.Label lblLastSync;
         private System.Windows.Forms.PictureBox pbxSelectOneDrive;
         private System.Windows.Forms.FolderBrowserDialog fbdSelectOnedrive;
+        private System.Windows.Forms.ToolTip ttpInfo;
     }
 }

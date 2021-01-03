@@ -52,10 +52,12 @@ namespace Film_BD_V4
         #endregion
 
         #region Farben
-        Color colBack = Color.FromArgb(54, 57, 63);
-        Color colHighlightLV1 = Color.FromArgb(53, 91, 162); //Farbe für Film/Serie/Anime
-        Color colHighlightLV2 = Color.FromArgb(53, 91, 162); //Farbe für Angefangen/Abgeschlossen/Lesezeichen
-        Color colDefault = Color.FromArgb(36, 61, 106); //Farbe für nicht gehighlithete Knöpfe
+        readonly Color colBack = Color.FromArgb(54, 57, 63); //Hintergrundfarbe für den unteren Bereich
+        readonly Color colBackMiddle = Color.FromArgb(46, 48, 54); //Hintergrundgfarbe für den mittleren Bereich
+        readonly Color colBackTop = Color.FromArgb(37, 39, 44); //Hintergrundfarbe für den oberen Bereich
+        readonly Color colHighlightLV1 = Color.FromArgb(53, 91, 162); //Farbe für Film/Serie/Anime
+        readonly Color colHighlightLV2 = Color.FromArgb(53, 91, 162); //Farbe für Angefangen/Abgeschlossen/Lesezeichen
+        readonly Color colDefault = Color.FromArgb(36, 61, 106); //Farbe für nicht gehighlighte Knöpfe
         #endregion
 
 
@@ -83,11 +85,12 @@ namespace Film_BD_V4
             fileName = Application.StartupPath + "\\filme.csv";
 
             picturePath = Application.StartupPath + @"\images\";
-            frm = new frmSettings(picturePath, fileName, "filme.csv");
+            
             if (Environment.UserName.ToLower() == "patrick")
             {
                 picturePath = @"Q:\Patrick\Bilder\kamera\Amsterdam August 2012\";
             }
+            frm = new frmSettings(picturePath, fileName, "filme.csv");
             changeHighlighting(btnFilterAll, true);
             changeHighlighting(btnShowAll, false);
             try
@@ -409,7 +412,7 @@ namespace Film_BD_V4
             if (editMode)
             {
                 editMode = false;
-                btnEdit.BackColor = colBack;
+                btnEdit.BackColor = colBackMiddle;
                 currentid = -1;
             }
             else
@@ -950,7 +953,7 @@ namespace Film_BD_V4
             }
             else
             {
-                btnInfo.BackColor = colBack;
+                btnInfo.BackColor = colBackMiddle;
             }
         }
         private void cbxStarted_CheckedChanged(object sender, EventArgs e)

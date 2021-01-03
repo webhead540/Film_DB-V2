@@ -17,7 +17,7 @@ namespace Film_BD_V4
         string csvPath;
         string csvName;
         string imagePath;
-        bool unsaved;
+        bool unsaved=false;
         DateTime lastSync = DateTime.MinValue;
         public frmSettings(string picturePath, string csvPath, string fileName)
         {
@@ -30,16 +30,41 @@ namespace Film_BD_V4
         private void btnCopyOneDrive_Click(object sender, EventArgs e)
         {
 
-            File.Copy(csvPath+"\\"+csvName, oneDrivePath + "\\"+csvName);
-            foreach(string image in Directory.GetFiles(imagePath))
+            if(oneDrivePath!=null&&oneDrivePath !="")
             {
-                FileInfo fi = new FileInfo(image);
-                File.Copy(image, oneDrivePath + "\\images\\" + fi.Name);
-            }
-            lastSync = DateTime.Now;
-            lblLastSync.Text = "letzter Sync: " + lastSync.ToString();
-            Properties.Settings.Default.lastSync = lastSync;
+                try
+                {
+                    if(!Directory.Exists(oneDrivePath+"\\images"))
+                    {
+                        Directory.CreateDirectory(oneDrivePath + "\\images");
+                    }
+                    Cursor.Current = Cursors.WaitCursor;
+                    File.Copy(csvPath, oneDrivePath + "\\" + csvName,true);
+                    foreach (string image in Directory.GetFiles(imagePath))
+                    {
+                        FileInfo fi = new FileInfo(image);
+                        File.Copy(image, oneDrivePath + "\\images\\" + fi.Name,true);
+     
+                    }
+                    lastSync = DateTime.Now;
+                    lblLastSync.Text = "letzter Sync: " + lastSync.ToString();
+                    Properties.Settings.Default.lastSync = lastSync;
 
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Du machst was falsch! Folgender Fehler ist aufgetreten:" + Environment.NewLine + ex.Message);
+                }
+                finally
+                {
+                    Cursor.Current = Cursors.Default;
+                }
+            }
+            else
+            {
+                MessageBox.Show("Der Onedrive Pfad wurde nicht ausgewählt!");
+            }
+            
         }
 
         private void pbxSelectOneDrive_Click(object sender, EventArgs e)
@@ -75,7 +100,7 @@ namespace Film_BD_V4
                 oneDrivePath = Environment.GetEnvironmentVariable("OneDriveConsumer");
                 fbdSelectOnedrive.SelectedPath = oneDrivePath;
             }
-
+            unsaved = false;
         }
 
         private void btnOk_Click(object sender, EventArgs e)
@@ -108,6 +133,11 @@ namespace Film_BD_V4
                     e.Cancel = true;
                 }
             }
+        }
+
+        private void pbxSelectOneDrive_MouseHover(object sender, EventArgs e)
+        {
+
         }
     }
 }
