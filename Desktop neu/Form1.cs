@@ -533,14 +533,11 @@ namespace Film_BD_V4
         {
             logging.Info("Der Eintrag " + delete.id + " " + delete.name + " wird gelöscht");
             mt.removeEntry(delete, editMode);
-            if (!isSuggest)
+            if(!editmode)
             {
-                fillGui(mt.getFilteredList());
+                    fillGui(mt.getFilteredList());
             }
-            else
-            {
-                fillGui(mt.getRandomList());
-            }
+            
 
         }
         private void Form2_MouseLeave(object sender, EventArgs e)

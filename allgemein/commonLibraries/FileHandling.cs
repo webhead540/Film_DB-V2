@@ -39,6 +39,17 @@ namespace commonLibraries
             {
                 entry+=";"+ m.lastWatchDate.ToShortDateString();
             }
+            if(!m.wishList)
+            {
+                if(m.started)
+                {
+                    entry += ";true;false";
+                }
+                else if(m.finished)
+                {
+                    entry += ";false;true";
+                }
+            }
             return entry;
         }
         internal void addEntry(string entry)
@@ -95,7 +106,8 @@ namespace commonLibraries
             int curIndex = 0;
             try
             {
-                entrys = File.ReadAllLines(csvPath).ToList();
+                string[] raw = File.ReadAllLines(csvPath);
+                entrys = raw.ToList();
                 //int freeId = 0;
                 foreach (string entry in entrys)
                 {
