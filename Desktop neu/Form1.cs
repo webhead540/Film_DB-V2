@@ -842,14 +842,6 @@ namespace Film_BD_V4
             
             args.Add(string.Join("|", newEntryGenreList));
 
-            if (lastWatch != DateTime.MinValue)
-            {
-                args.Add(lastWatch.ToShortDateString());
-            }
-            else
-            {
-                args.Add(dtpWatchdate.Value.ToShortDateString());
-            }
             if(cbxStarted.Checked)
             {
                 args.Add("true");//angefangen Flag

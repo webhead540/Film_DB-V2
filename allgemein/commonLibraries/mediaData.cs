@@ -25,8 +25,8 @@ namespace commonLibraries
         public bool finished { get; private set; }
         public bool started { get; private set; }
         #endregion
+
         #region DateTime
-        public DateTime lastWatchDate { get; private set; }
         public DateTime dateAdded { get; private set; }
         #endregion
         #endregion
@@ -109,10 +109,7 @@ namespace commonLibraries
         {
             id = newID;
         }
-        internal void setLastWatchDate(DateTime date)
-        {
-            lastWatchDate = date;
-        }
+
         internal void setGenre(string cat)
         {
             if (cat == null)

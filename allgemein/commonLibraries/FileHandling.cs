@@ -35,10 +35,7 @@ namespace commonLibraries
                 entry += ";" + m.genre;
             }
             
-            if(m.lastWatchDate>DateTime.MinValue)
-            {
-                entry+=";"+ m.lastWatchDate.ToShortDateString();
-            }
+
             if(!m.wishList)
             {
                 if(m.started)
@@ -177,17 +174,10 @@ namespace commonLibraries
                     if (parts.Count() > 9) //Kompatibilität zur alten Liste ohne Genre
                     {
                         m.setGenre(parts[9]);
-                        if (parts.Count()>10) //Kompatibilität zur alten Liste ohne zuletzt geschaut
+
+                        if(parts.Count()>10) //kompatibilität zur alten Liste ohne angefangen/abgeschlossen
                         {
-                            m.setLastWatchDate(DateTime.Parse(parts[10]));
-                        }
-                        else
-                        {
-                            m.setLastWatchDate(DateTime.MinValue);
-                        }
-                        if(parts.Count()>11) //kompatibilität zur alten Liste ohne angefangen/abgeschlossen
-                        {
-                                m.setState(Convert.ToBoolean(parts[11]),Convert.ToBoolean(parts[12]));        
+                                m.setState(Convert.ToBoolean(parts[10]),Convert.ToBoolean(parts[11]));        
                         }
                     }
                     else 
