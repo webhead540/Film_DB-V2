@@ -567,7 +567,11 @@ namespace Film_BD_V4
                     pictureName = selected.pictureName;
                     if (selected.dateAdded > DateTime.MinValue)
                     {
-                        dtpWatchdate.Value = selected.dateAdded;
+                        dtpWatchdate.Value =selected.dateAdded;
+                    }
+                    else
+                    {
+                        dtpWatchdate.Value = DateTime.Today;
                     }
                     if (selected.parts > 0)
                     {
@@ -1057,6 +1061,7 @@ namespace Film_BD_V4
         private void btnNewEntry_Click(object sender, EventArgs e)
         {
             livMedia.Visible = false;
+            dtpWatchdate.Value = DateTime.Today;
             
         }
 
