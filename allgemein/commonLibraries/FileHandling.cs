@@ -177,7 +177,11 @@ namespace commonLibraries
 
                         if(parts.Count()>10) //kompatibilität zur alten Liste ohne angefangen/abgeschlossen
                         {
-                                m.setState(Convert.ToBoolean(parts[10]),Convert.ToBoolean(parts[11]));        
+                            if(parts.Count()>=12) //sicherstellen, dass beide Flags vorhanden sind
+                            {
+                                m.setState(Convert.ToBoolean(parts[10]), Convert.ToBoolean(parts[11]));
+                            }
+                                
                         }
                     }
                     else 
