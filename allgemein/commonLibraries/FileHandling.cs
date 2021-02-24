@@ -13,14 +13,16 @@ namespace commonLibraries
         List<string> genres = new List<string>();
         int lastID;
         string csvPath;
-        string backupFileName;
+        bool doBackup;
         string picturePath;
+        string backupFilePath;
         string userName = Environment.UserName;
-        internal FileHandling(string fileName, string imagePath, string backup)
+        internal FileHandling(string fileName, string imagePath, string backupPath, bool backup = false)
         {
             csvPath = fileName;
-            backupFileName = backup;
+            doBackup = backup;
             picturePath = imagePath;
+            backupFilePath = backupPath;
         }
         internal string createNewEntryString(Media m)
         {
@@ -82,11 +84,12 @@ namespace commonLibraries
         {
             try
             {
-                File.WriteAllLines(csvPath, entrys);
-                if(backupFileName!="")
+                if(doBackup)
                 {
-                    File.WriteAllLines(backupFileName, entrys);
+                    File.Copy(csvPath, backupFilePath);
                 }
+                File.WriteAllLines(csvPath, entrys);
+                
                 
                 return true;
             }

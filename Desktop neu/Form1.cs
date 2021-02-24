@@ -116,7 +116,7 @@ namespace Film_BD_V4
             changeHighlighting(btnShowAll, false);
             try
             {
-                mt = new mediaTools(fileName, picturePath, "");
+                mt = new mediaTools(fileName, picturePath, Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)+@"filme_backup.csv",true);
                 logging.Debug("mediatools Objekt erstellt");
                 currentList = mt.getAllEntrys();
                 movies = mt.getMovies();

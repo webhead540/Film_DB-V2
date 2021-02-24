@@ -19,11 +19,11 @@ namespace commonLibraries
         int freeid;
         
         private static readonly log4net.ILog logging = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
-        public mediaTools(string filePath,string imagePath,string backup)
+        public mediaTools(string filePath,string imagePath,string backupPath,bool doBackup=false)
         {
             try
             {
-                fh = new FileHandling(filePath, imagePath, backup);
+                fh = new FileHandling(filePath, imagePath, backupPath, doBackup) ;
                 content = fh.parseFile();
                 content = content.OrderBy(x => x.id).ToList();
                 freeid = fh.getLastID() + 1;
